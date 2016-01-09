@@ -1,6 +1,7 @@
-# love match workspace
+# love match website
 
 Spring + Bootscrap + MySQL
 
+MySQL:
 Database name: matchdb
-MySQL username/password: root/emc12345
+username/password: root/emc12345
