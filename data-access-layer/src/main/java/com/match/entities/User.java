@@ -9,10 +9,10 @@ public class User extends AbstractEntity {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8547939835167515760L;
-
+	private static final long serialVersionUID = 1L;
 	
 	private String name;
+	private String psw;
 	
 	public String getName() {
 		return name;
@@ -20,6 +20,14 @@ public class User extends AbstractEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPsw() {
+		return psw;
+	}
+
+	public void setPsw(String psw) {
+		this.psw = psw;
 	}
 
 }

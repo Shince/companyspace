@@ -23,17 +23,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findAllUser() {
+	public List<User> findAll() {
 		return userRepository.findAll();
 	}
 
 	@Override
-	public User createUser(User user) {
+	public User create(User user) {
 		return userRepository.save(user);
 	}
 
 	@Override
-	public User updateUser(User user) {
+	public User update(User user) {
 		return userRepository.save(user);
 	}
 

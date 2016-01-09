@@ -6,8 +6,8 @@ import com.match.entities.User;
 
 public interface UserService {
 	User findOne(Long id);
-	List<User> findAllUser();
-	User createUser(User user);
-	User updateUser(User user);
+	List<User> findAll();
+	User create(User user);
+	User update(User user);
 	User findUserByName(String name);
 }
