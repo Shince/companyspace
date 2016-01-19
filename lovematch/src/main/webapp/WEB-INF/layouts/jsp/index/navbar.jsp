@@ -33,11 +33,11 @@ background-color:#ff6920;
 </div>
 <div class="row-fluid navbars max-width">
 	<div class="navbars_right pull-left">
-		<a class="nav_active"  href="<c:url value='/competitions/asc/list'></c:url>">网站首页</a> 
-		<a href="<c:url value='/competitions/asc/list'></c:url>">路跑赛事</a>
-		<a href="<c:url value='#'></c:url>">越野赛事</a>
-		<a href="<c:url value='#'></c:url>">铁三/自行车赛事</a>
-		<a href="<c:url value='#'></c:url>">其他竞赛</a>    
+		<a class="nav_active"  href="<c:url value='/'></c:url>">网站首页</a> 
+		<a href="<c:url value='/competitions/roadrace/list'></c:url>">路跑赛事</a>
+		<a href="<c:url value='/competitions/crossrace/list'></c:url>">越野赛事</a>
+		<a href="<c:url value='/competitions/triathlons/list'></c:url>">铁三/自行车赛事</a>
+		<a href="<c:url value='/competitions/other/list'></c:url>">其他竞赛</a>    
 		<a href="<c:url value='/sharinginfo/list'></c:url>">信息分享</a> 
 		
 	</div>

@@ -12,41 +12,42 @@ import org.springframework.stereotype.Service;
 import com.lovematch.match.controller.common.defs.GlobalDefs;
 import com.lovematch.match.jpa.entity.Competition;
 import com.lovematch.match.jpa.repository.CompetitionRepository;
+
 @Service("competitionService")
 public class CompetitionServiceImpl implements CompetitionService {
 	@Autowired
 	private CompetitionRepository repository;
+
 	@Override
 	public Competition find(Long id) {
-		
+
 		return repository.findOne(id);
 	}
 
 	@Override
 	public Competition create(Competition entity) {
-		
+
 		return repository.save(entity);
 	}
 
 	@Override
 	public Competition update(Competition entity) {
-		
+
 		return repository.save(entity);
 	}
 
 	@Override
 	public void delete(Long id) {
-		
+
 		repository.delete(id);
 	}
 
 	@Override
-	public Page<Competition> findPageOrderById(int pageNumber, int pageSize,
-			String order) {
+	public Page<Competition> findPageOrderById(int pageNumber, int pageSize, String order) {
 		Pageable pageable;
-		if(order.equals(GlobalDefs.DATE_ASC)){
+		if (order.equals(GlobalDefs.DATE_ASC)) {
 			pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "id");
-		}else{
+		} else {
 			pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "id");
 		}
 		return repository.findAll(pageable);
@@ -54,8 +55,18 @@ public class CompetitionServiceImpl implements CompetitionService {
 
 	@Override
 	public List<Competition> findList(String order) {
-		
+
 		return repository.findAll();
+	}
+
+	@Override
+	public Page<Competition> findPageByType(String type, int pageNumber, int pageSize) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "id");
+		if (type != null && type.equals("all")) {
+			return repository.findAll(pageable);
+		} else {
+			return repository.findAllByType(type, pageable);
+		}
 	}
 
 }

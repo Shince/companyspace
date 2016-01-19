@@ -31,7 +31,7 @@ import com.lovematch.match.util.MyUtil;
  */
 @Controller
 public class HomeController {
-	@Autowired 
+	@Autowired
 	private WebNewsService newsService;
 	@Autowired
 	private WebContService contService;
@@ -41,51 +41,54 @@ public class HomeController {
 	private SharingInfoService sharingInfoService;
 	@Autowired
 	private ProductService productService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String jumpTohome(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		return "redirect:/competitions/asc/list";
+
+		return "redirect:/competitions/all/list";
 	}
-	@RequestMapping(value = "/competitions/{order}/list", method = RequestMethod.GET)
-	public String homePage(Locale locale, Model model,@PathVariable String order,@RequestParam(value="pageNumber", defaultValue="0") int pageNumber,
-			@RequestParam(value="pageSize", defaultValue="10") int pageSize) {
+
+	@RequestMapping(value = "/competitions/{type}/list", method = RequestMethod.GET)
+	public String homePage(Locale locale, Model model, @PathVariable String type,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
-		Page<Competition> page = competitionService.findPageOrderById(pageNumber, pageSize, order);
+		Page<Competition> page = competitionService.findPageByType(type, pageNumber, pageSize);
 		model.addAttribute("page", page);
-		
 		return "home";
 	}
-	@RequestMapping(value="/competitions/view/{id}")
-	public String showCompetitionsDetail(@PathVariable Long id,Model model){
+
+	@RequestMapping(value = "/competitions/view/{id}")
+	public String showCompetitionsDetail(@PathVariable Long id, Model model) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
 		Competition competition = competitionService.find(id);
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("competition", competition);
 		model.addAttribute("products", products);
-		return "competition.view"; 
+		return "competition.view";
 	}
-	@RequestMapping(value="/product/view/{id}")
-	public String showProductDetail(@PathVariable Long id,Model model){
+
+	@RequestMapping(value = "/product/view/{id}")
+	public String showProductDetail(@PathVariable Long id, Model model) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
 		Product product = productService.find(id);
 		model.addAttribute("product", product);
 		return "product.view";
 	}
-	
-	
+
 	@RequestMapping(value = "/sharinginfo/list")
-	public String showSharingInfoPage(Model model,@RequestParam(value="pageNumber", defaultValue="0") int pageNumber,
-			@RequestParam(value="pageSize", defaultValue="10") int pageSize) {
+	public String showSharingInfoPage(Model model,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 		try {
 			Page<SharingInfo> sharinginfos = sharingInfoService.findPageOrderByDate(0, 10, null);
 			model.addAttribute("sharingInfo", sharinginfos.getContent());
@@ -94,53 +97,54 @@ public class HomeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "sharinginfo.list";
 	}
-	
-	@RequestMapping(value="/sharinginfo/view/{id}")
-	public String showSharinginfoDetail(@PathVariable Long id,Model model){
+
+	@RequestMapping(value = "/sharinginfo/view/{id}")
+	public String showSharinginfoDetail(@PathVariable Long id, Model model) {
 		Page<SharingInfo> sharinginfos = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfos.getContent());
-		
+
 		SharingInfo sharingInfo = sharingInfoService.find(id);
 		model.addAttribute("sharingInfo", sharingInfo);
 		return "sharinginfo.view";
 	}
-	 
-	@RequestMapping(value="/news/list")
-	public String showNews(@RequestParam(value="pageNumber", defaultValue="0") int pageNumber,
-			@RequestParam(value="pageSize", defaultValue="10") int pageSize,Model model){
-		
+
+	@RequestMapping(value = "/news/list")
+	public String showNews(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize, Model model) {
+
 		Page<WebNews> page = newsService.findNewsPage(pageNumber, pageSize);
 		model.addAttribute("page", page);
 		return "news.list";
 	}
-	@RequestMapping(value="/news/view/{id}")
-	public String showNews(@PathVariable Long id,Model model){
+
+	@RequestMapping(value = "/news/view/{id}")
+	public String showNews(@PathVariable Long id, Model model) {
 		WebNews news = newsService.find(id);
 		model.addAttribute("news", news);
 		return "news.view";
 	}
-	@RequestMapping(value="/cont/{type}/list")
-	public String showCont(@PathVariable String type,@RequestParam(value="pageNumber", defaultValue="0") int pageNumber,
-			@RequestParam(value="pageSize", defaultValue="10") int pageSize,Model model){
-		
+
+	@RequestMapping(value = "/cont/{type}/list")
+	public String showCont(@PathVariable String type,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize, Model model) {
+
 		Page<WebCont> page = contService.findWebContPageByType(type, pageNumber, pageSize);
 		model.addAttribute("page", page);
 		model.addAttribute("webInfoType", MyUtil.WebContStatusMap().get(type));
 		model.addAttribute("type", type);
 		return "cont.list";
 	}
-	@RequestMapping(value="/cont/{type}/view/{id}")
-	public String showContDetail(@PathVariable String type,@PathVariable Long id,Model model){
+
+	@RequestMapping(value = "/cont/{type}/view/{id}")
+	public String showContDetail(@PathVariable String type, @PathVariable Long id, Model model) {
 		WebCont cont = contService.find(id);
 		model.addAttribute("cont", cont);
 		model.addAttribute("webInfoType", MyUtil.WebContStatusMap().get(type));
 		return "cont.view";
 	}
-	
-	
-
 
 }

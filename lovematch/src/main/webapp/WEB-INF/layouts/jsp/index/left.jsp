@@ -6,7 +6,7 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 </style>
 
 <div class="row-fluid container_div">
-	<div class="row-fluid date-div"> <a class="date-filter date-active" href="#">近期活动</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="date-filter" href="<c:url value='/competitions/asc/list'></c:url>">日期升序</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="date-filter" href="<c:url value='/competitions/desc/list'></c:url>">日期降序</a></div>
+	<div class="row-fluid date-div"> <a class="date-filter date-active" href="#">近期活动</a><!-- &nbsp;&nbsp;&nbsp;&nbsp;<a class="date-filter" href="<c:url value='/competitions/asc/list'></c:url>">日期升序</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="date-filter" href="<c:url value='/competitions/desc/list'></c:url>">日期降序</a> --></div>
 	<div class="row-fluid">
 		<c:forEach items="${page.content }" var="page">
 			<div class="competition-div">

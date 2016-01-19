@@ -22,8 +22,10 @@
 			<div class="control-group" id="type">				
 				<div class="controls">
 					竞赛类别：<select name="type">
-						<option value="race" selected="selected">公路竞赛</option>
-						<option value="bicycle">自行车</option>
+						<option value="roadrace" selected="selected">路跑赛事</option>
+						<option value="crossrace">越野赛事</option>
+						<option value="triathlons">铁三/自行车赛事</option>
+						<option value="other">其他竞赛</option>
 					</select>
 				</div>
 			</div>

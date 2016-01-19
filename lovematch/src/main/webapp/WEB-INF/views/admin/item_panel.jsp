@@ -14,7 +14,7 @@
 	
 	<ul class="admin nav-stackeds nav  round border-green-all">
 		<li><a href='<c:url value="/admin/news/all/list"></c:url>' >网站新闻</a></li>
-		<li><a href='<c:url value="/admin/competition/asc/list"></c:url>' >竞赛列表</a></li>
+		<li><a href='<c:url value="/admin/competition/list"></c:url>' >竞赛列表</a></li>
 		<li><a href='<c:url value="/admin/sharinginfo/list"></c:url>' >信息分享</a></li>
 	</ul>
 	<hr>

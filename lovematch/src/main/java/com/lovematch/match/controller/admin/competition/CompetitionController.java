@@ -30,51 +30,52 @@ public class CompetitionController {
 	private CompetitionService competitionService;
 	@Autowired
 	private ProductService productService;
-	
-	@RequestMapping(value="/admin/competition/{order}/list")
-	public String showCompetitionInfoList(Model model,@PathVariable String order,
-			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber){
-		Page<Competition> page = competitionService.findPageOrderById(pageNumber, GlobalDefs.PAGESIZE, order);
+
+	@RequestMapping(value = "/admin/competition/list")
+	public String showCompetitionInfoList(Model model,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber) {
+		Page<Competition> page = competitionService.findPageOrderById(pageNumber, GlobalDefs.PAGESIZE, "asc");
 		model.addAttribute("page", page);
 		return "admin.competition.list";
 	}
-	@RequestMapping(value="/admin/competition/new")
-	public String showConpetitionAddPage(){
+
+	@RequestMapping(value = "/admin/competition/new")
+	public String showConpetitionAddPage() {
 		return "admin.competition.add";
 	}
-	@RequestMapping(value="/admin/competition/edit/{id}")
-	public String showConpetitionEditPage(Model model,@PathVariable Long id){
+
+	@RequestMapping(value = "/admin/competition/edit/{id}")
+	public String showConpetitionEditPage(Model model, @PathVariable Long id) {
 		try {
-			if(id != null){
+			if (id != null) {
 				Competition competition = competitionService.find(id);
 				model.addAttribute("competition", competition);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "admin.competition.edit";
 	}
-	@RequestMapping(value="/admin/competition/view/{id}")
-	public String showConpetitionViewPage(Model model,@PathVariable Long id){
+
+	@RequestMapping(value = "/admin/competition/view/{id}")
+	public String showConpetitionViewPage(Model model, @PathVariable Long id) {
 		Competition competition = competitionService.find(id);
 		model.addAttribute("competition", competition);
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("products", products);
 		return "admin.competition.view";
 	}
-	@RequestMapping(value="/admin/competition/add")
-	public String showCompetitionDetail(Model model,MultipartHttpServletRequest request,
-			HttpSession session,@RequestParam("competition_id") Long id,
-			@RequestParam("description") String description,
-			@RequestParam("title") String title,
-			@RequestParam("type") String type,
-			@RequestParam("enrollLinke") String enrollLinke,
-			@RequestParam("webUrl") String webUrl){
+
+	@RequestMapping(value = "/admin/competition/add")
+	public String showCompetitionDetail(Model model, MultipartHttpServletRequest request, HttpSession session,
+			@RequestParam("competition_id") Long id, @RequestParam("description") String description,
+			@RequestParam("title") String title, @RequestParam("type") String type,
+			@RequestParam("enrollLinke") String enrollLinke, @RequestParam("webUrl") String webUrl) {
 		Competition competition;
-		if(id != null){
+		if (id != null) {
 			competition = competitionService.find(id);
-		}else{
+		} else {
 			competition = new Competition();
 		}
 		competition.setDescription(description);
@@ -89,8 +90,7 @@ public class CompetitionController {
 		try {
 			MultipartFile file = request.getFile("coverFile");
 			if (!file.isEmpty()) {
-				String savePath = MyUtil.operatThePreviewPhoto(file, "competition",
-						session, competition.getId());
+				String savePath = MyUtil.operatThePreviewPhoto(file, "competition", session, competition.getId());
 				competition.setPicPath(savePath);
 				competitionService.update(competition);
 
@@ -98,20 +98,20 @@ public class CompetitionController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		//model.addAttribute("competition", competition);
-		return "redirect:/admin/competition/asc/list";
+
+		// model.addAttribute("competition", competition);
+		return "redirect:/admin/competition/list";
 	}
-	
-	@RequestMapping(value="/admin/competition/destory",method = RequestMethod.POST)
-	public String showCompetitionDetail(@RequestParam("id") Long id){
+
+	@RequestMapping(value = "/admin/competition/destory", method = RequestMethod.POST)
+	public String showCompetitionDetail(@RequestParam("id") Long id) {
 		try {
 			competitionService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//model.addAttribute("competition", competition);
-		return "redirect:/admin/competition/asc/list";
+		// model.addAttribute("competition", competition);
+		return "redirect:/admin/competition/list";
 	}
-	
+
 }

@@ -11,7 +11,7 @@ public class Competition extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String type; // road race, bicycle or other types of competition for further.
+	private String type = "roadrace"; // road race, bicycle or other types of competition for further.
 	private String title;
 	private String postDate; // the competition post date.
 	@Lob
