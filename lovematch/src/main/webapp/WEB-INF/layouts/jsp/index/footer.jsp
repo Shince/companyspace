@@ -8,7 +8,7 @@
 
 </style>
 <div class="row-fluid btm">
-
+	<hr/>
 	<p>版权所有 © 上财中亚云计算研究中心：张敏&单轲 </p>
 
 </div>

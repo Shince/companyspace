@@ -13,9 +13,8 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 				 <table style="width: 100%;">
 				 	<tr>
 				 	<td width="20%" align="left" valign="top"><a href="<c:url value='/competitions/view/${page.id }'></c:url>"><img class="img-polaroid " style="height: 60px;" src="<c:url value='${page.picPath }'></c:url>" ></a></td>
-				 	<td  width="25%" align="left" valign="top"><b>${page.name}</b><br><a target="_blank" href="${page.enrollLinke}">点击报名</a></td>
-				 	<td  width="25%" align="left" valign="top"> ${page.postDate }</td>
-				 	<td  width="30%" align="left" valign="top"><a href="<c:url value='/competitions/view/${page.id }'></c:url>">点击查看详情</a></td>
+				 	<td  width="60%" align="left" valign="top"><a href="<c:url value='/competitions/view/${page.id }'></c:url>"><b>${page.name}</b></a><br><a target="_blank" href="${page.enrollLinke}">点击报名</a></td>
+				 	<td  width="20%" align="left" valign="top"> ${page.postDate }</td>
 				 	</tr>
 				 </table>
 			</div>

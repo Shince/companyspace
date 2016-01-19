@@ -17,7 +17,7 @@
 	.navbg{
 	 	background-position: left top; background-repeat: repeat-x;margin: 0 auto;
 	}
-	.footer{background-color:  #ccc;}
+	.footer{background-color:  #fff;}
 	.top-navbar{background-color: #f1f1f1;height: 95px;}
 </style>
 <body>
