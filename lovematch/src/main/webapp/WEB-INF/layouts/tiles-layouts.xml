@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="index-layout" template="/WEB-INF/layouts/jsp/index.jsp">
+		<put-attribute name="title" value="lovematch" />
+		<put-attribute name="css" value="/resources/css/index.css" />
+		<put-attribute name="top_navibar" value="/WEB-INF/layouts/jsp/index/top_navbar.jsp" />
+		<put-attribute name="navibar"  value="/WEB-INF/layouts/jsp/index/navbar.jsp" />
+		<put-attribute name="solide" value="/WEB-INF/layouts/jsp/index/carousel.jsp" />
+		<put-attribute name="left" value="/WEB-INF/layouts/jsp/index/left.jsp" />
+		<put-attribute name="right" value="/WEB-INF/layouts/jsp/index/right.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/jsp/index/footer.jsp" />
+	</definition>
+	
+	<definition name="index-sec-layout" template="/WEB-INF/layouts/jsp/index_sec.jsp">	
+		<put-attribute name="title" value="lovematch" />
+		<put-attribute name="css" value="/resources/css/index.css" />
+		<put-attribute name="top_navibar" value="/WEB-INF/layouts/jsp/index/top_navbar.jsp" />
+		<put-attribute name="navibar"  value="/WEB-INF/layouts/jsp/index/navbar.jsp" />
+		<put-attribute name="solide" value="/WEB-INF/layouts/jsp/index/banner_sec.jsp" />
+		<put-attribute name="left" value="" />
+		<put-attribute name="right" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/jsp/index/footer.jsp" />
+	</definition>
+
+	<definition name="admin-layout" template="/WEB-INF/layouts/jsp/admin.jsp">
+		<put-attribute name="title" value="网站后台" />
+		<put-attribute name="top-navbar" value="" />
+		<put-attribute name="banner" value="/WEB-INF/views/admin/banner/banner.jsp" /> 
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="left" value="/WEB-INF/layouts/jsp/admin-layout/left.jsp" />
+		<put-attribute name="flash" value="" />
+		<put-attribute name="right" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/jsp/admin/footer.jsp" />
+	</definition>
+	<definition name="error-layout" template="/WEB-INF/layouts/jsp/error.jsp">
+		<put-attribute name="title" value="出错了！" />
+		<put-attribute name="top-navbar" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/jsp/admin/footer.jsp" />
+	</definition>
+	
+	<definition name="login-layout" template="/WEB-INF/layouts/jsp/login.jsp">
+		<put-attribute name="title" value="登录" />
+		<put-attribute name="top-navbar" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+</tiles-definitions>

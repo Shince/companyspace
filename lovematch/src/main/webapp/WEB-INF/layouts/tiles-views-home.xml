@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+
+	<definition name="home" extends="index-layout">
+		
+	</definition>
+	<definition name="competition.view" extends="index-layout">
+		<put-attribute name="solide" value="/WEB-INF/layouts/jsp/index/banner_sec.jsp" />
+		<put-attribute name="left" value="/WEB-INF/views/front/competitions/view/view.jsp" />
+	</definition>
+	<definition name="product.view" extends="index-layout">
+	<put-attribute name="solide" value="/WEB-INF/layouts/jsp/index/banner_sec.jsp" />
+		<put-attribute name="left" value="/WEB-INF/views/front/competitions/product/view/view.jsp" />
+	</definition>
+	<definition name="sharinginfo.list" extends="index-layout">
+	<put-attribute name="solide" value="/WEB-INF/layouts/jsp/index/banner_sec.jsp" />
+		<put-attribute name="left" value="/WEB-INF/views/front/sharinginfo/list/list.jsp" />
+	</definition>
+	<definition name="sharinginfo.view" extends="index-layout">
+	<put-attribute name="solide" value="/WEB-INF/layouts/jsp/index/banner_sec.jsp" />
+		<put-attribute name="left" value="/WEB-INF/views/front/sharinginfo/view/view.jsp" />
+	</definition>
+	
+	
+	<definition name="news.list" extends="index-sec-layout">
+		<put-attribute name="left" value="/WEB-INF/views/front/news/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/front/news/list/list.jsp" />
+	</definition>
+	<definition name="news.view" extends="index-sec-layout">	
+		<put-attribute name="left" value="/WEB-INF/views/front/news/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/front/news/view/view.jsp" />
+	</definition>
+	<definition name="cont.list" extends="index-sec-layout">	
+		<put-attribute name="left" value="/WEB-INF/views/front/webcont/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/front/webcont/list/list.jsp" />
+	</definition>
+	
+	<definition name="cont.view" extends="index-sec-layout">
+		<put-attribute name="left" value="/WEB-INF/views/front/webcont/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/front/webcont/view/view.jsp" />
+	</definition>
+	
+	<definition name="login" extends="login-layout">
+		<put-attribute name="body" value="/WEB-INF/layouts/jsp/login/_body.jsp" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="404" extends="error-layout">
+		<put-attribute name="title" value="404 Error" />
+		<put-attribute name="body" value="/WEB-INF/views/_shared/404.jsp"></put-attribute>
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="error" extends="error-layout">
+		<put-attribute name="title" value="System Error" />
+		<put-attribute name="body" value="/WEB-INF/views/_shared/error.jsp"></put-attribute>
+		<put-attribute name="footer" value="" />
+	</definition>	
+</tiles-definitions>

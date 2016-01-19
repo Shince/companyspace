@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+<!-- admin user  -->
+	<definition name="admin.news.list" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/news/list/list.jsp" />
+	</definition>
+	
+	<definition name="admin.news.add" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/news/new/create.jsp" />
+	</definition>
+	
+	<definition name="admin.news.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/news/edit/edit.jsp" />
+	</definition>
+
+	<definition name="admin.cont.list" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/webcont/list/list.jsp" />
+	</definition>
+	
+	<definition name="admin.cont.add" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/webcont/new/create.jsp" />
+	</definition>
+	<definition name="admin.cont.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/webcont/edit/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.competition.list" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/competition/list/list.jsp" />
+	</definition>
+	
+	<definition name="admin.competition.add" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/competition/edit/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.competition.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/competition/edit/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.competition.view" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/competition/view/view.jsp" />
+	</definition>
+	
+	<definition name="admin.sharinginfo.list" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/sharinginfo/list/list.jsp" />
+	</definition>
+	
+	<definition name="admin.sharinginfo.add" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/sharinginfo/edit/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.sharinginfo.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/sharinginfo/edit/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.product.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/product/edit/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.product.add" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/product/edit/edit.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="admin.pwd.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/pwd/edit.jsp" />
+	</definition>
+	
+	<definition name="admin.support.list" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/support/list/list.jsp" />
+	</definition>
+	
+	<definition name="admin.support.add" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/support/new/create.jsp" />
+	</definition>
+	
+	<definition name="admin.support.edit" extends="admin-layout">
+		<put-attribute name="left" value="/WEB-INF/views/admin/item_panel.jsp" />
+		<put-attribute name="right" value="/WEB-INF/views/admin/support/edit/edit.jsp" />
+	</definition>
+	
+	
+	
+</tiles-definitions>
