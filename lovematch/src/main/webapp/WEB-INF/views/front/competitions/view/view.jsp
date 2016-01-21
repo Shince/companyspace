@@ -27,7 +27,7 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 		<c:forEach items="${products}" var="product">
 			<div class="product-div">
 				<a href="<c:url value='/product/view/${product.id }'></c:url>"><img src="<c:url value='${product.photo_url }'></c:url>" style="width:95%;"></a><br>
-				${product.name }
+				<a href="<c:url value='/product/view/${product.id }'></c:url>"><b>${product.name }</b></a>
 			</div>
 		</c:forEach>
 	</div>

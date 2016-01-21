@@ -9,7 +9,7 @@
 </style>
 <div class="row-fluid custom round">
 	<div  class="row">
-		<h4>编辑产品asd</h4>
+		<h4>相关产品</h4>
 	</div>
 	<div class="content">
 		<form action= "<c:url value='/admin/product/add'></c:url>" enctype="multipart/form-data"  method="post" name="news_post" id="news_new_form"   >

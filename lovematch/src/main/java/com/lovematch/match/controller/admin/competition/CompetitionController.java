@@ -33,11 +33,21 @@ public class CompetitionController {
 
 	@RequestMapping(value = "/admin/competition/list")
 	public String showCompetitionInfoList(Model model,
-			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber) {
-		Page<Competition> page = competitionService.findPageOrderById(pageNumber, GlobalDefs.PAGESIZE, "asc");
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+		Page<Competition> page = competitionService.findPageOrderById(pageNumber, GlobalDefs.PAGESIZE, "desc");
 		model.addAttribute("page", page);
 		return "admin.competition.list";
 	}
+	
+	@RequestMapping(value = "/admin/competition/{type}/list")
+	public String showCompetitionInfoListByType(Model model, @PathVariable String type,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+		Page<Competition> page = competitionService.findPageByType(type, pageNumber, pageSize);
+		model.addAttribute("page", page);
+		return "admin.competition.list";
+	} 
 
 	@RequestMapping(value = "/admin/competition/new")
 	public String showConpetitionAddPage() {

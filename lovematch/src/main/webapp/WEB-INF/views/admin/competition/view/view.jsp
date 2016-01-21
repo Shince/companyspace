@@ -26,7 +26,7 @@
 		报名链接：<a href="${competition.enrollLinke }" target="_blank">${competition.enrollLinke }</a>
 		<div class="row-fluid">
 		<h5>相关产品</h5>
-		<a class="btn btn-info pull-left" href="<c:url value='/admin/competition/${competition.id}/product/new'></c:url>">添加</a>
+		<a class="btn btn-success pull-left" href="<c:url value='/admin/competition/${competition.id}/product/new'></c:url>">添加</a>
 		
 		</div>
 		<div  class="row-fluid">
