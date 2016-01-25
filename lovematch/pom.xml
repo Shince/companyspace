@@ -28,7 +28,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.lovematch</groupId>
-			<artifactId>data-access-layer</artifactId>
+			<artifactId>data-layer</artifactId>
 			<version>1.0.0-BUILD-SNAPSHOT</version>
 		</dependency>
 		<!-- tiles -->
