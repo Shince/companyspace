@@ -37,7 +37,7 @@
 body {
 	max-width: 1600px;
 	width: 100%;
-	background-color: #ccc;	background: url(<c:url value="/resources/img/top_bg.jpg"></c:url>) repeat;
+	background-color: #f8f8f8;
 }
 
 .container-fluid {
@@ -46,18 +46,17 @@ body {
 }
 
 .container-fluid .row-fluid {
-	background: url(<c:url value="/resources/img/top_bg.jpg"></c:url>) repeat;
+	
 }
 </style>
 
 <div class="jumbotron custom">
 	<div id="errordiv1">
 		<div class="erroeraddress">
-			<input style="margin-bottom: 300px;" type="image" />
 			抱歉，您访问的页面地址有误！
 		</div>
 		<div id="errordiv2">
-			<div>请检查输入的网址是否正确，</div>
+			<h5>请检查输入的网址是否正确</h5>
 			<div>
 				<a href='<c:url value="/"></c:url>'> 返回首页 </a>
 			</div>
