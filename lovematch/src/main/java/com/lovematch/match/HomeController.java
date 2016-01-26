@@ -1,5 +1,6 @@
 package com.lovematch.match;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -53,13 +54,16 @@ public class HomeController {
 
 		return "redirect:/competitions/all/list";
 	}
-
+ 
 	@RequestMapping(value = "/competitions/{type}/list", method = RequestMethod.GET)
 	public String homePage(Locale locale, Model model, @PathVariable String type,
 			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
 			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
+		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+		
 		Page<Competition> page = competitionService.findPageByType(type, pageNumber, pageSize);
 		model.addAttribute("page", page);
 		return "home";
@@ -69,6 +73,9 @@ public class HomeController {
 	public String showCompetitionsDetail(@PathVariable Long id, Model model) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
+		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+		
 		Competition competition = competitionService.find(id);
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("competition", competition);
@@ -80,6 +87,9 @@ public class HomeController {
 	public String showProductDetail(@PathVariable Long id, Model model) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
+		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+		
 		Product product = productService.find(id);
 		model.addAttribute("product", product);
 		return "product.view";
@@ -92,6 +102,9 @@ public class HomeController {
 		try {
 			Page<SharingInfo> sharinginfos = sharingInfoService.findPageOrderByDate(0, 10, null);
 			model.addAttribute("sharingInfo", sharinginfos.getContent());
+			Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+			model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+			
 			Page<SharingInfo> page = sharingInfoService.findPageOrderByDate(pageNumber, pageSize, null);
 			model.addAttribute("page", page);
 		} catch (Exception e) {
@@ -105,9 +118,11 @@ public class HomeController {
 	public String showSharinginfoDetail(@PathVariable Long id, Model model) {
 		Page<SharingInfo> sharinginfos = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfos.getContent());
-
+		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+		
 		SharingInfo sharingInfo = sharingInfoService.find(id);
-		model.addAttribute("sharingInfo", sharingInfo);
+		model.addAttribute("info", sharingInfo);
 		return "sharinginfo.view";
 	}
 

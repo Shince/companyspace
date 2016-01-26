@@ -1,5 +1,7 @@
 package com.lovematch.match.jpa.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
@@ -19,7 +21,37 @@ public class Competition extends AbstractEntity {
 	private String officialWebsite; // url link for the competition official website.
 	private String enrollLinke; // url link for enroll the competition.
 	private String picPath; // the picture used in this post.
+	private Date startDate;
+	private Date endDate;
+	private String competitionStartDate;
 	
+	
+	public String getCompetitionStartDate() {
+		return competitionStartDate;
+	}
+
+	public void setCompetitionStartDate(String competitionStartDate) {
+		this.competitionStartDate = competitionStartDate;
+	}
+
+	
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	public String getName() {
 		return title;
 	}

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 .product{
 	width: 150px; height: 150px; margin: 10px; float: left;
@@ -22,6 +23,8 @@
 		<center><img src="<c:url value='${competition.picPath}'></c:url>" ></center>
 		${competition.description}
 		<br>
+		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd" value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate pattern="yyyy-MM-dd" value="${competition.endDate}"></fmt:formatDate></b><br>
+		比赛时间：<b>${competition.competitionStartDate}</b><br><br>
 		官方网址：<a href="${competition.officialWebsite }" target="_blank">${competition.officialWebsite }</a><br>
 		报名链接：<a href="${competition.enrollLinke }" target="_blank">${competition.enrollLinke }</a>
 		<div class="row-fluid">

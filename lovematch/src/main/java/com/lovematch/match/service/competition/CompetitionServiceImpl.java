@@ -1,5 +1,6 @@
 package com.lovematch.match.service.competition;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,14 @@ public class CompetitionServiceImpl implements CompetitionService {
 		} else {
 			return repository.findAllByType(type, pageable);
 		}
+	}
+
+	@Override
+	public Page<Competition> findPageByCurrentDate(int pageNumber,
+			int pageSize, Date currentDate) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "startDate");
+		Page<Competition> page = repository.findAllByCurrentDate(currentDate, pageable);
+		return page;
 	}
 
 }

@@ -4,6 +4,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript" src="<c:url value="/resources/js/emptyCheck-ajax.js" />"></script>
+<script type="text/javascript"  src="<c:url value="/resources/js/date/WdatePicker.js" />" ></script>
 <style>
 
 </style>
@@ -31,10 +32,24 @@
 			</div>
 			<div class="control-group" id="title">
 				<div class="controls">
-					报名链接：<input type="text" required="required" name="enrollLinke" placeholder="报名链接" value="${competition.title }"> <span class="help-inline"></span>
+					报名开始：<input type="text"  onClick="WdatePicker()" class="Wdate"  required="required" name="startDate" placeholder="开始时间" value="${competition.startDate }"> <span class="help-inline"></span>
 				</div>
 			</div>
-			
+			<div class="control-group" id="title">
+				<div class="controls">
+					报名结束：<input type="text"  onClick="WdatePicker()" class="Wdate"  required="required" name="endDate" placeholder="结束时间" value="${competition.endDate }"> <span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group" id="title">
+				<div class="controls">
+					报名链接：<input type="text"  required="required" name="enrollLinke" placeholder="报名链接" value="${competition.title }"> <span class="help-inline"></span>
+				</div>
+			</div>
+			<div class="control-group" id="title">
+				<div class="controls">
+					比赛日期：<input type="text"  onClick="WdatePicker()" class="Wdate"  required="required" name="competitionStartDate" placeholder="比赛开始时间" value="${competition.competitionStartDate }"> <span class="help-inline"></span>
+				</div>
+			</div>
 			<div class="control-group" id="title">
 				<div class="controls">
 					官方网址：<input type="text" name="webUrl" placeholder="网址" value="${competition.officialWebsite }"> <span class="help-inline"></span>

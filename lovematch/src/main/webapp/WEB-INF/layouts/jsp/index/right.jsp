@@ -10,8 +10,15 @@
 
 <div class="row-fluid span12 boxshadow " style="margin: 30px 0px;">
 	<div class="row-fluid span12 lefttop-div">
-		<img style="width: 80%; margin-bottom: 20px;" src="<c:url value='/resources/img/match/111.jpg'></c:url>">
-		<a href="#" class="round lefttop-btn">我要认领</a>
+		<div class="row-fluid span12 bg_white" style="padding: 5px 10px ;">
+		<c:forEach items="${unstartCompetitions}" var="unstartMatch">
+			<div class="row-fluid " style=" text-align: left;margin: 5px 0px;margin-bottom: 15px;border-bottom: 1px dotted #ccc; ">
+			<a href="<c:url value='/competitions/view/${usstartMatch.id }'></c:url>">${unstartMatch.title}</a>
+			</div>
+		</c:forEach>
+		
+		<a href="#" class="round lefttop-btn">正在报名</a>
+		</div>
 	</div>
 	
 	<div class="row-fluid ">

@@ -122,8 +122,8 @@ a:hover {
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 }
-.lefttop-btn{padding: 10px 76px; color:#fff; background-color: #ff6920; }
-.lefttop-div{height: 180px; margin-bottom:10px; padding-top:20px; background-color:#eeeeee;text-align: center;}
+.lefttop-btn{padding: 3px 76px; color:#fff; background-color: #ff6920;font-size: 14px; }
+.lefttop-div{ margin-bottom:20px; padding:10px; border:0px solid #000; background-color:#eeeeee;text-align: center;font-size: 12px;}
 
 .container_div {margin: 30px 0px;padding: 15px;}
 .date-div{border-bottom: 1px solid #ff6920; padding-bottom: 4px;margin-bottom: 20px; color: #f1f1f1;}

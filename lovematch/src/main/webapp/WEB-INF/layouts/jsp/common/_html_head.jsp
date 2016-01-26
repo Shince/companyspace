@@ -20,8 +20,9 @@
 	<script type="text/javascript" src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/myutil.js" />"></script>
 	
+ 	
+ 	
  	<!-- 
- 	<script type="text/javascript"  src="<c:url value="/resources/js/date/WdatePicker.js" />" ></script>
  	 <script type="text/javascript" src="<c:url value='/resources/js/loginCheck.js'></c:url>"></script>
     <script type="text/javascript" src="<c:url value='/resources/js/emptyCheck-ajax.js'></c:url>"></script>
     <script type="text/javascript" charset="utf-8" src="<c:url value="/resources/kindeditor-4.1.3/kindeditor.js" />"></script>

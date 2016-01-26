@@ -10,12 +10,12 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 <div class="row-fluid   container_div">
 	<div class="row-fluid date-div"> <a class="date-filter date-active" href="#">信息分享</a></div>
 	<div class="row-fluid">
-		<center><h4>${sharingInfo.title }</h4></center>
-		<span class="content-date">发布时间:${sharingInfo.postDate}</span>
+		<center><h4>${info.title }</h4></center>
+		<span class="content-date">发布时间:${info.postDate}</span>
 		<hr>
-		<center><img src="<c:url value='${sharingInfo.picPath }'></c:url>" ></center>
+		<center><img src="<c:url value='${info.picPath }'></c:url>" ></center>
 		<br>
-		${sharingInfo.content }
+		${info.content }
 	</div>
 </div>
 

@@ -1,5 +1,6 @@
 package com.lovematch.match.service.competition;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -11,4 +12,5 @@ public interface CompetitionService extends BaseService<Competition> {
 	Page<Competition> findPageOrderById(int pageNumber,int pageSize, String order);
 	Page<Competition> findPageByType(String type, int pageNumber,int pageSize);
 	List<Competition> findList(String order);
+	Page<Competition> findPageByCurrentDate(int pageNumber,int pageSize, Date currentDate);
 }

@@ -80,8 +80,9 @@ public class CompetitionController {
 	@RequestMapping(value = "/admin/competition/add")
 	public String showCompetitionDetail(Model model, MultipartHttpServletRequest request, HttpSession session,
 			@RequestParam("competition_id") Long id, @RequestParam("description") String description,
-			@RequestParam("title") String title, @RequestParam("type") String type,
-			@RequestParam("enrollLinke") String enrollLinke, @RequestParam("webUrl") String webUrl) {
+			@RequestParam("title") String title, @RequestParam("type") String type,@RequestParam("startDate") String startDate,
+			@RequestParam("endDate") String endDate,@RequestParam("enrollLinke") String enrollLinke, 
+			@RequestParam("webUrl") String webUrl,@RequestParam("competitionStartDate") String competitionStartDate) {
 		Competition competition;
 		if (id != null) {
 			competition = competitionService.find(id);
@@ -91,6 +92,19 @@ public class CompetitionController {
 		competition.setDescription(description);
 		competition.setTitle(title);
 		competition.setType(type);
+		try {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date sDate = formatter.parse(startDate);
+			Date eDate = formatter.parse(endDate);
+			competition.setStartDate(sDate);
+			competition.setEndDate(eDate);
+		} catch (Exception e) {
+			e.printStackTrace();
+			competition.setStartDate(new Date());
+			competition.setEndDate(new Date());
+		}
+		 
+		competition.setCompetitionStartDate(competitionStartDate);
 		competition.setEnrollLinke(enrollLinke);
 		competition.setOfficialWebsite(webUrl);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
