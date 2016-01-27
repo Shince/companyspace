@@ -21,8 +21,8 @@ public class Competition extends AbstractEntity {
 	private String officialWebsite; // url link for the competition official website.
 	private String enrollLinke; // url link for enroll the competition.
 	private String picPath; // the picture used in this post.
-	private Date startDate;
-	private Date endDate;
+	private Date startDate; // enroll start date
+	private Date endDate; // enroll end date
 	private String competitionStartDate;
 	
 	

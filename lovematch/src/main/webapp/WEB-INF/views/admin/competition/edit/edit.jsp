@@ -47,7 +47,7 @@
 			</div>
 			<div class="control-group" id="title">
 				<div class="controls">
-					比赛日期：<input type="text"  onClick="WdatePicker()" class="Wdate"  required="required" name="competitionStartDate" placeholder="比赛开始时间" value="${competition.competitionStartDate }"> <span class="help-inline"></span>
+					比赛时间：<input type="text"  onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" class="Wdate"  required="required" name="competitionStartDate" placeholder="比赛开始时间" value="${competition.competitionStartDate }"> <span class="help-inline"></span>
 				</div>
 			</div>
 			<div class="control-group" id="title">
