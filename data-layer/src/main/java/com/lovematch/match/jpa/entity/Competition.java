@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Competition extends AbstractEntity {
@@ -21,7 +23,9 @@ public class Competition extends AbstractEntity {
 	private String officialWebsite; // url link for the competition official website.
 	private String enrollLinke; // url link for enroll the competition.
 	private String picPath; // the picture used in this post.
+    @Temporal(TemporalType.DATE) 
 	private Date startDate; // enroll start date
+    @Temporal(TemporalType.DATE)
 	private Date endDate; // enroll end date
 	private String competitionStartDate;
 	
