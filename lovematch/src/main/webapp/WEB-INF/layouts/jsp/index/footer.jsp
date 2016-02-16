@@ -9,7 +9,7 @@
 </style>
 <div class="row-fluid btm">
 	<hr/>
-	<p>版权所有 © 上财中亚云计算研究中心：张敏&单轲 </p>
+	<p>找比赛网 <a href='http://www.miitbeian.gov.cn/' target='_blank'>沪ICP备16004236号</a> 版权所有  ©2016-2020 Copyright</p>
 
 </div>
 

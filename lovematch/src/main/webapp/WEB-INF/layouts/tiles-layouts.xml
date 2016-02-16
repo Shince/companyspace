@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 	<definition name="index-layout" template="/WEB-INF/layouts/jsp/index.jsp">
-		<put-attribute name="title" value="lovematch" />
+		<put-attribute name="title" value="找比赛" />
 		<put-attribute name="css" value="/resources/css/index.css" />
 		<put-attribute name="top_navibar" value="/WEB-INF/layouts/jsp/index/top_navbar.jsp" />
 		<put-attribute name="navibar"  value="/WEB-INF/layouts/jsp/index/navbar.jsp" />
@@ -17,7 +17,7 @@
 	</definition>
 	
 	<definition name="index-sec-layout" template="/WEB-INF/layouts/jsp/index_sec.jsp">	
-		<put-attribute name="title" value="lovematch" />
+		<put-attribute name="title" value="找比赛" />
 		<put-attribute name="css" value="/resources/css/index.css" />
 		<put-attribute name="top_navibar" value="/WEB-INF/layouts/jsp/index/top_navbar.jsp" />
 		<put-attribute name="navibar"  value="/WEB-INF/layouts/jsp/index/navbar.jsp" />

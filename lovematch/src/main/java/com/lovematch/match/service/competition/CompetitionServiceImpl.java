@@ -71,11 +71,20 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	@Override
-	public Page<Competition> findPageByCurrentDate(int pageNumber,
-			int pageSize, Date currentDate) {
+	public Page<Competition> findPageByCurrentDate(int pageNumber, int pageSize, Date currentDate) {
 		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "startDate");
 		Page<Competition> page = repository.findAllByCurrentDate(currentDate, pageable);
 		return page;
+	}
+
+	@Override
+	public Page<Competition> findPageByTypeAsc(String type, int pageNumber, int pageSize) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		if (type != null && type.equals("all")) {
+			return repository.findAll(pageable);
+		} else {
+			return repository.findAllByType(type, pageable);
+		}
 	}
 
 }

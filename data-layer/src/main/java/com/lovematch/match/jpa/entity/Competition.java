@@ -27,14 +27,14 @@ public class Competition extends AbstractEntity {
 	private Date startDate; // enroll start date
     @Temporal(TemporalType.DATE)
 	private Date endDate; // enroll end date
-	private String competitionStartDate;
+	private Date competitionStartDate;
 	
 	
-	public String getCompetitionStartDate() {
+	public Date getCompetitionStartDate() {
 		return competitionStartDate;
 	}
 
-	public void setCompetitionStartDate(String competitionStartDate) {
+	public void setCompetitionStartDate(Date competitionStartDate) {
 		this.competitionStartDate = competitionStartDate;
 	}
 

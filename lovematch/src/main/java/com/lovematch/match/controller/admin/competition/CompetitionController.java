@@ -96,15 +96,16 @@ public class CompetitionController {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date sDate = formatter.parse(startDate);
 			Date eDate = formatter.parse(endDate);
+			formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+			Date csDate = formatter.parse(competitionStartDate);
 			competition.setStartDate(sDate);
 			competition.setEndDate(eDate);
+			competition.setCompetitionStartDate(csDate);
 		} catch (Exception e) {
 			e.printStackTrace();
 			competition.setStartDate(new Date());
 			competition.setEndDate(new Date());
 		}
-		 
-		competition.setCompetitionStartDate(competitionStartDate);
 		competition.setEnrollLinke(enrollLinke);
 		competition.setOfficialWebsite(webUrl);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
