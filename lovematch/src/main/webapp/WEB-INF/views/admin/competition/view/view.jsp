@@ -23,8 +23,8 @@
 		<center><img src="<c:url value='${competition.picPath}'></c:url>" ></center>
 		${competition.description}
 		<br>
-		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd" value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate pattern="yyyy-MM-dd" value="${competition.endDate}"></fmt:formatDate></b><br>
-		比赛时间：<b>${competition.competitionStartDate}</b><br><br>
+		比赛时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${competition.competitionStartDate}"></fmt:formatDate></b><br>
+		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${competition.endDate}"></fmt:formatDate></b><br><br>
 		官方网址：<a href="${competition.officialWebsite }" target="_blank">${competition.officialWebsite }</a><br>
 		报名链接：<a href="${competition.enrollLinke }" target="_blank">${competition.enrollLinke }</a>
 		<div class="row-fluid">

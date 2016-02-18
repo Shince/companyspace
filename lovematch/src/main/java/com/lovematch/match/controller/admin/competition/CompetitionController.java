@@ -93,10 +93,9 @@ public class CompetitionController {
 		competition.setTitle(title);
 		competition.setType(type);
 		try {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			Date sDate = formatter.parse(startDate);
 			Date eDate = formatter.parse(endDate);
-			formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			Date csDate = formatter.parse(competitionStartDate);
 			competition.setStartDate(sDate);
 			competition.setEndDate(eDate);

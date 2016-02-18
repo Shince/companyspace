@@ -19,7 +19,7 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 		${competition.description }
 		<br><br>
 		比赛时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${competition.competitionStartDate}"></fmt:formatDate></b><br>
-		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd" value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate pattern="yyyy-MM-dd" value="${competition.endDate}"></fmt:formatDate></b><br><br>
+		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${competition.endDate}"></fmt:formatDate></b><br><br>
 		官方网址：<a href="<c:url value='${competition.officialWebsite }'></c:url>"><b>点击进入</b></a><br>
 		报名地址：<a href="<c:url value='${competition.enrollLinke }'></c:url>"><b>点击进入</b></a><br>
 	</div>
