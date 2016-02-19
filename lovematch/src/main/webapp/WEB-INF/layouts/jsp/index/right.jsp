@@ -12,6 +12,13 @@
 	<div class="row-fluid span12 lefttop-div bg_white">
 		<div class="row-fluid span12 bg_white" style="padding: 5px 10px ; margin-bottom: -20px;">
 		<div class="round lefttop-btn">正在报名中的赛事</div>
+		
+		<c:if test="${empty unstartCompetitions}">
+			<div class="row-fluid " style=" text-align: left;margin: 20px 0px;border-bottom: 1px dotted #ccc; ">
+			<b>暂无可报名的赛事。</b>
+			</div>
+		</c:if>
+		
 		<c:forEach items="${unstartCompetitions}" var="unstartMatch">
 			<div class="row-fluid " style=" text-align: left;margin: 20px 0px;border-bottom: 1px dotted #ccc; ">
 			<b><a href="<c:url value='/competitions/view/${usstartMatch.id }'></c:url>">${unstartMatch.title}</a></b>
