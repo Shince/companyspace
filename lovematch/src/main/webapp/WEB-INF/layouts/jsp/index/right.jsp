@@ -19,7 +19,7 @@
 		</c:if>
 		<c:forEach items="${unstartCompetitions}" var="unstartMatch">
 			<div class="row-fluid " style=" text-align: left;margin: 20px 0px;border-bottom: 1px dotted #ccc; ">
-			<b><a href="<c:url value='/competitions/view/${usstartMatch.id }'></c:url>">${unstartMatch.title}</a></b>
+			<b><a href="<c:url value='/competitions/view/${unstartMatch.id }'></c:url>">${unstartMatch.title}</a></b>
 			</div>
 		</c:forEach>
 		</div>
