@@ -36,7 +36,8 @@ background-color:#ff6920;
 		<a class="nav_active"  href="<c:url value='/'></c:url>">网站首页</a> 
 		<a href="<c:url value='/competitions/roadrace/list'></c:url>">路跑赛事</a>
 		<a href="<c:url value='/competitions/crossrace/list'></c:url>">越野赛事</a>
-		<a href="<c:url value='/competitions/triathlons/list'></c:url>">铁三/自行车赛事</a>
+		<a href="<c:url value='/competitions/triathlons/list'></c:url>">铁三赛事</a>
+		<a href="<c:url value='/competitions/bicycle/list'></c:url>">自行车赛事</a>
 		<a href="<c:url value='/competitions/other/list'></c:url>">其他竞赛</a>    
 		<a href="<c:url value='/sharinginfo/list'></c:url>">信息分享</a> 
 		

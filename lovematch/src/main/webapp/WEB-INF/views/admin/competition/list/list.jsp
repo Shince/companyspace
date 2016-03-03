@@ -35,7 +35,8 @@
 				<a type="button" href="<c:url value='/admin/competition/list'></c:url>" class="btn btn-default">所有赛事</a>
 				<a type="button" href="<c:url value='/admin/competition/roadrace/list'></c:url>" class="btn btn-default">路跑赛事</a>
 				<a type="button" href="<c:url value='/admin/competition/crossrace/list'></c:url>" class="btn btn-default">越野赛事</a>
-				<a type="button" href="<c:url value='/admin/competition/triathlons/list'></c:url>" class="btn btn-default">铁三/自行车赛事</a>
+				<a type="button" href="<c:url value='/admin/competition/triathlons/list'></c:url>" class="btn btn-default">铁三赛事</a>
+				<a type="button" href="<c:url value='/admin/competition/bicycle/list'></c:url>" class="btn btn-default">自行车赛事</a>
 				<a type="button" href="<c:url value='/admin/competition/other/list'></c:url>" class="btn btn-default">其他赛事</a>
 			</div>
 		</div>

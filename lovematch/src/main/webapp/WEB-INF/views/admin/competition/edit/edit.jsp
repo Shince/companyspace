@@ -25,7 +25,8 @@
 					竞赛类别：<select name="type">
 						<option value="roadrace" selected="selected">路跑赛事</option>
 						<option value="crossrace">越野赛事</option>
-						<option value="triathlons">铁三/自行车赛事</option>
+						<option value="triathlons">铁三赛事</option>
+						<option value="bicycle">自行车赛事</option>
 						<option value="other">其他竞赛</option>
 					</select>
 				</div>

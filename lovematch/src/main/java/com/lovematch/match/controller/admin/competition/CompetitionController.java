@@ -130,6 +130,11 @@ public class CompetitionController {
 	@RequestMapping(value = "/admin/competition/destory", method = RequestMethod.POST)
 	public String showCompetitionDetail(@RequestParam("id") Long id) {
 		try {
+			Competition competition = competitionService.find(id);
+			List<Product> products = productService.findAllByCompetition(competition);
+			for(Product product : products){
+				productService.delete(product.getId());
+			}
 			competitionService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
