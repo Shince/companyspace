@@ -14,7 +14,7 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 		<h4 style="text-align:center;">${competition.title }</h4>
 		<span class="content-date">发布时间:${competition.postDate}</span>
 		<hr>
-		<div style="text-align:center;"><img src="<c:url value='${competition.picPath }'></c:url>" ></div>
+		<div style="text-align:center;"><img src="<c:url value='${competition.contextPicPath }'></c:url>" ></div>
 		<br>
 		${competition.description }
 		<br><br>

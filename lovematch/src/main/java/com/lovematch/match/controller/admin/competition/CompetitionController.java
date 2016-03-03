@@ -112,12 +112,17 @@ public class CompetitionController {
 		competition.setPostDate(date);
 		competition = competitionService.create(competition);
 		try {
-			MultipartFile file = request.getFile("coverFile");
-			if (!file.isEmpty()) {
-				String savePath = MyUtil.operatThePreviewPhoto(file, "competition", session, competition.getId());
-				competition.setPicPath(savePath);
+			MultipartFile coverFile = request.getFile("coverFile");
+			MultipartFile contextfile = request.getFile("contextFile");
+			if (!coverFile.isEmpty()) {
+				String saveCoverPath = MyUtil.operatThePreviewPhoto(coverFile, "competition", session, competition.getId());
+				competition.setPicPath(saveCoverPath);
 				competitionService.update(competition);
-
+			}
+			if (!contextfile.isEmpty()) {
+				String saveContextPath = MyUtil.operatThePreviewLargePhoto(contextfile, "competition", session, competition.getId());
+				competition.setContextPicPath(saveContextPath);
+				competitionService.update(competition);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

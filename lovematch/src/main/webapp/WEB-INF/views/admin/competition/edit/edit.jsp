@@ -64,9 +64,10 @@
 			</div>
 			<div class="control-group" >
 				<div class="controls">
-					图片：<input type="file" name="coverFile" /><span style="font-size: 13px; color: red;">${errorMsg }</span>
+					<p>封面图片：<input type="file" name="coverFile" /><span style="font-size: 13px; color: red;">${errorMsg }</span></p>
+					<p>内容图片：<input type="file" name="contextFile" /><span style="font-size: 13px; color: red;">${errorMsg }</span></p>
 					<br><span class="text-error"><em>
-						只支持jpg、gif、bmp、png格式，建议封面宽度500px，高度300px
+						只支持jpg、gif、bmp、png格式，建议宽度500px，高度300px
 					</em></span>
 					<span class="help-inline"></span><br>
 				</div>

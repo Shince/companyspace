@@ -211,6 +211,28 @@ public class MyUtil {
 				+ "/small" + "." + fileExtension;
 		return savePath;
 	}
+	
+	public static String operatThePreviewLargePhoto(MultipartFile file, String type,
+			HttpSession session, Long type_id) throws Exception {
+		String fileName = file.getOriginalFilename();
+		String fileExtension = fileName
+				.substring(fileName.lastIndexOf(".") + 1);
+		String path = session.getServletContext().getRealPath("/")
+				+ "/resources/attached/" + type + "/" + type_id;
+		FileUtil.createRealPath(path, session);
+		String previewFile = path + File.separator + "large" + "."
+				+ fileExtension;
+		File saveDest = new File(path + File.separator + fileName);
+		file.transferTo(saveDest);
+		
+		FileUtil.getPreviewImage(saveDest, new File(previewFile),fileExtension, GlobalDefs.PHOTO_WIDTH,
+					GlobalDefs.PHOTO_HEIGHT);
+		
+		String savePath = "/resources/attached/" + type + "/" + type_id
+				+ "/large" + "." + fileExtension;
+		return savePath;
+	}
+	
 	/*
 	public static String operatThePreviewPhoto(MultipartFile file, String type, HttpSession session, Long type_id) throws Exception{
 		String fileName = file.getOriginalFilename();
