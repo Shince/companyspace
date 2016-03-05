@@ -1,4 +1,4 @@
-package com.lovematch.match.controller.beans;
+package com.lovematch.match.beans;
 
 import com.lovematch.match.jpa.entity.User;
 

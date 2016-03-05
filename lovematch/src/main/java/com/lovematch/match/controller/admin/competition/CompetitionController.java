@@ -1,6 +1,8 @@
 package com.lovematch.match.controller.admin.competition;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.lovematch.match.beans.RaceDistance;
 import com.lovematch.match.controller.common.defs.GlobalDefs;
 import com.lovematch.match.jpa.entity.Competition;
 import com.lovematch.match.jpa.entity.Product;
@@ -59,7 +62,27 @@ public class CompetitionController {
 		try {
 			if (id != null) {
 				Competition competition = competitionService.find(id);
+				RaceDistance raceDistance = new RaceDistance();
+				String distance = competition.getDistance();
+				String[] distanceArray = distance.split("&");
+				List<String> distanceList = Arrays.asList(distanceArray);
+				List<String> otherDistanceList= new ArrayList<String>();
+				for(String dis : distanceList){
+					if(dis.equals("wholeMarathon")){
+						raceDistance.setWholeMarathon("wholeMarathon");
+					}
+					else if(dis.equals("halfMarathon")){
+						raceDistance.setHalfMarathon("halfMarathon");
+					}
+					else if(dis!=null && !dis.isEmpty()){
+						raceDistance.setOtherDistance("otherDistance");
+						otherDistanceList.add(dis);
+						raceDistance.setOtherDistanceList(otherDistanceList);
+					}
+				}
 				model.addAttribute("competition", competition);
+				model.addAttribute("raceDistance", raceDistance);
+				model.addAttribute("otherDistance",raceDistance.getOtherDistanceList());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +94,27 @@ public class CompetitionController {
 	@RequestMapping(value = "/admin/competition/view/{id}")
 	public String showConpetitionViewPage(Model model, @PathVariable Long id) {
 		Competition competition = competitionService.find(id);
+		RaceDistance raceDistance = new RaceDistance();
+		String distance = competition.getDistance();
+		String[] distanceArray = distance.split("&");
+		List<String> distanceList = Arrays.asList(distanceArray);
+		for(String dis : distanceList){
+			System.out.println("====="+dis+"=======");
+			
+			if(dis.equals("wholeMarathon")){
+				raceDistance.setWholeMarathon("wholeMarathon");
+			}
+			if(dis.equals("halfMarathon")){
+				raceDistance.setHalfMarathon("halfMarathon");
+			}
+			if(dis!=null && !dis.isEmpty()){
+				raceDistance.setOtherDistance("otherDistance");
+				raceDistance.setOtherDistanceList(distanceList);
+			}
+		}
+		
 		model.addAttribute("competition", competition);
+		model.addAttribute("raceDistance", raceDistance);
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("products", products);
 		return "admin.competition.view";
@@ -82,8 +125,10 @@ public class CompetitionController {
 			@RequestParam("competition_id") Long id, @RequestParam("description") String description,
 			@RequestParam("title") String title, @RequestParam("type") String type,@RequestParam("startDate") String startDate,
 			@RequestParam("endDate") String endDate,@RequestParam("enrollLinke") String enrollLinke, 
-			@RequestParam("webUrl") String webUrl,@RequestParam("competitionStartDate") String competitionStartDate) {
+			@RequestParam("webUrl") String webUrl,@RequestParam("competitionStartDate") String competitionStartDate,
+			@RequestParam("doorClose") String doorClose) {
 		Competition competition;
+		String distance = new String();
 		if (id != null) {
 			competition = competitionService.find(id);
 		} else {
@@ -107,6 +152,29 @@ public class CompetitionController {
 		}
 		competition.setEnrollLinke(enrollLinke);
 		competition.setOfficialWebsite(webUrl);
+		
+		String wholeMarathon = request.getParameter("wholeMarathon");
+		String halfMarathon = request.getParameter("halfMarathon");
+		String otherDistance = request.getParameter("otherDistance");
+		
+		if(wholeMarathon!=null && wholeMarathon.equals("wholeMarathon")){
+			distance += wholeMarathon;
+			distance += "&";
+		}
+		if(halfMarathon!=null && halfMarathon.equals("halfMarathon")){
+			distance += halfMarathon;
+			distance += "&";
+		}
+		if(otherDistance!=null && otherDistance.equals("otherDistance")){
+			for(int i=0;i!=6;i++){
+				distance+=request.getParameter("other"+i);
+				distance += "&";
+			}
+		}
+		
+		competition.setDistance(distance);
+		competition.setDoorClose(doorClose);
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(new Date());
 		competition.setPostDate(date);

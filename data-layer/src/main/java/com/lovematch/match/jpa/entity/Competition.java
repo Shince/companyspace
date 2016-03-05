@@ -20,12 +20,13 @@ public class Competition extends AbstractEntity {
 	private String description;
 	private String officialWebsite; // url link for the competition official website.
 	private String enrollLinke; // url link for enroll the competition.
+	private String distance; // distance for a race.
 	private String picPath; // the picture used in this post.
 	private String contextPicPath; // the picture used in this post.
 	private Date startDate; // enroll start date
 	private Date endDate; // enroll end date
 	private Date competitionStartDate;
-	
+	private String doorClose; // door close time for a race.
 	
 	public Date getCompetitionStartDate() {
 		return competitionStartDate;
@@ -123,6 +124,22 @@ public class Competition extends AbstractEntity {
 
 	public void setContextPicPath(String contextPicPath) {
 		this.contextPicPath = contextPicPath;
+	}
+
+	public String getDistance() {
+		return distance;
+	}
+
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+
+	public String getDoorClose() {
+		return doorClose;
+	}
+
+	public void setDoorClose(String doorClose) {
+		this.doorClose = doorClose;
 	}
 	
 }

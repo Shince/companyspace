@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.lovematch.match.controller.beans.UserInfo;
+import com.lovematch.match.beans.UserInfo;
 import com.lovematch.match.controller.common.defs.GlobalDefs;
 import com.lovematch.match.jpa.entity.User;
 import com.lovematch.match.service.user.UserService;
