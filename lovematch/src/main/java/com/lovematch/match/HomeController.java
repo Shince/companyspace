@@ -1,5 +1,7 @@
 package com.lovematch.match;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.lovematch.match.beans.RaceDistance;
 import com.lovematch.match.jpa.entity.Competition;
 import com.lovematch.match.jpa.entity.Product;
 import com.lovematch.match.jpa.entity.SharingInfo;
@@ -77,12 +80,34 @@ public class HomeController {
 
 	@RequestMapping(value = "/competitions/view/{id}")
 	public String showCompetitionsDetail(@PathVariable Long id, Model model) {
-		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
-		model.addAttribute("sharingInfo", sharinginfo.getContent());
+//		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
+//		model.addAttribute("sharingInfo", sharinginfo.getContent());
 		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
 		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
 		
 		Competition competition = competitionService.find(id);
+		RaceDistance raceDistance = new RaceDistance();
+		String distance = competition.getDistance();
+		String[] distanceArray = distance.split("&");
+		List<String> distanceList = Arrays.asList(distanceArray);
+		List<String> otherDistanceList= new ArrayList<String>();
+		for(String dis : distanceList){
+			if(dis.equals("wholeMarathon")){
+				raceDistance.setWholeMarathon("wholeMarathon");
+			}
+			else if(dis.equals("halfMarathon")){
+				raceDistance.setHalfMarathon("halfMarathon");
+			}
+			else if(dis!=null && !dis.isEmpty()){
+				raceDistance.setOtherDistance("otherDistance");
+				otherDistanceList.add(dis);
+				raceDistance.setOtherDistanceList(otherDistanceList);
+			}
+		}
+		model.addAttribute("competition", competition);
+		model.addAttribute("raceDistance", raceDistance);
+		model.addAttribute("otherDistance",raceDistance.getOtherDistanceList());
+		
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("competition", competition);
 		model.addAttribute("products", products);

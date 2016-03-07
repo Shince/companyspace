@@ -98,23 +98,23 @@ public class CompetitionController {
 		String distance = competition.getDistance();
 		String[] distanceArray = distance.split("&");
 		List<String> distanceList = Arrays.asList(distanceArray);
+		List<String> otherDistanceList= new ArrayList<String>();
 		for(String dis : distanceList){
-			System.out.println("====="+dis+"=======");
-			
 			if(dis.equals("wholeMarathon")){
 				raceDistance.setWholeMarathon("wholeMarathon");
 			}
-			if(dis.equals("halfMarathon")){
+			else if(dis.equals("halfMarathon")){
 				raceDistance.setHalfMarathon("halfMarathon");
 			}
-			if(dis!=null && !dis.isEmpty()){
+			else if(dis!=null && !dis.isEmpty()){
 				raceDistance.setOtherDistance("otherDistance");
-				raceDistance.setOtherDistanceList(distanceList);
+				otherDistanceList.add(dis);
+				raceDistance.setOtherDistanceList(otherDistanceList);
 			}
 		}
-		
 		model.addAttribute("competition", competition);
 		model.addAttribute("raceDistance", raceDistance);
+		model.addAttribute("otherDistance",raceDistance.getOtherDistanceList());
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("products", products);
 		return "admin.competition.view";
