@@ -15,9 +15,8 @@ a[class='date-filter']:hover{color:#ff6920;border-bottom: 2px solid #ccc;padding
 				 <table style="width: 100%;">
 				 	<tr>
 				 	<td width="20%" align="left" valign="top"><a href="<c:url value='/sharinginfo/view/${page.id }'></c:url>"><img class="img-polaroid " style="height: 60px;" src="<c:url value='${page.picPath }'></c:url>" ></a></td>
-				 	<td  width="25%" align="left" valign="top"><b>${page.title}</b></td>
-				 	<td  width="25%" align="left" valign="top"> ${page.postDate }</td>
-				 	<td  width="30%" align="left" valign="top"><a href="<c:url value='/sharinginfo/view/${page.id }'></c:url>">点击查看详情</a></td>
+				 	<td  width="60%" align="left" valign="top"><b><a href="<c:url value='/sharinginfo/view/${page.id }'></c:url>">${page.title}</a></b></td>
+				 	<td  width="20%" align="left" valign="top"> ${page.postDate }</td>
 				 	</tr>
 				 </table>
 			</div>
