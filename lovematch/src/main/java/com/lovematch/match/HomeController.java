@@ -80,17 +80,18 @@ public class HomeController {
 
 	@RequestMapping(value = "/competitions/view/{id}")
 	public String showCompetitionsDetail(@PathVariable Long id, Model model) {
-//		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
-//		model.addAttribute("sharingInfo", sharinginfo.getContent());
 		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
 		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
 		
 		Competition competition = competitionService.find(id);
+		
+		// for distance
 		RaceDistance raceDistance = new RaceDistance();
 		String distance = competition.getDistance();
 		String[] distanceArray = distance.split("&");
 		List<String> distanceList = Arrays.asList(distanceArray);
 		List<String> otherDistanceList= new ArrayList<String>();
+		List<String> dcList = new ArrayList<String>();
 		for(String dis : distanceList){
 			if(dis.equals("wholeMarathon")){
 				raceDistance.setWholeMarathon("wholeMarathon");
@@ -104,9 +105,20 @@ public class HomeController {
 				raceDistance.setOtherDistanceList(otherDistanceList);
 			}
 		}
+		
+		// for door close
+		String doorClose = competition.getDoorClose();
+		String[] doorCloseArray = doorClose.split("&");
+		List<String> doorCloseList = Arrays.asList(doorCloseArray);
+		for(String dc : doorCloseList){
+			if(dc!=null && !dc.isEmpty()){
+				dcList.add(dc);
+			}
+		}
 		model.addAttribute("competition", competition);
 		model.addAttribute("raceDistance", raceDistance);
 		model.addAttribute("otherDistance",raceDistance.getOtherDistanceList());
+		model.addAttribute("doorCloseList", dcList);
 		
 		List<Product> products = productService.findAllByCompetition(competition);
 		model.addAttribute("competition", competition);

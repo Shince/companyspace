@@ -32,21 +32,23 @@ a[class='date-filter']:hover {
 		<div style="text-align: center;">
 			<img src="<c:url value='${competition.contextPicPath }'></c:url>">
 		</div>
-		<br> ${competition.description } <br>
-		<br> 比赛时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+		<br> ${competition.description } <br> <br> 比赛时间：<b><fmt:formatDate
+				pattern="yyyy-MM-dd HH:mm"
 				value="${competition.competitionStartDate}"></fmt:formatDate></b><br>
 		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 				value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate
 				pattern="yyyy-MM-dd HH:mm" value="${competition.endDate}"></fmt:formatDate></b><br>
-		<br> 比赛距离：<b><c:if test="${raceDistance.wholeMarathon eq 'wholeMarathon' }">全程马拉松&nbsp;&nbsp;&nbsp;</c:if>
-		<c:if test="${raceDistance.halfMarathon eq 'halfMarathon' }">半程程马拉松&nbsp;&nbsp;&nbsp;</c:if>
-		<c:if test="${raceDistance.otherDistance eq 'otherDistance' }">
-			<c:forEach items="${otherDistance }" var="otherDistance">
+		<br> 比赛距离：<b><c:if
+				test="${raceDistance.wholeMarathon eq 'wholeMarathon' }">全程马拉松&nbsp;&nbsp;&nbsp;</c:if>
+			<c:if test="${raceDistance.halfMarathon eq 'halfMarathon' }">半程马拉松&nbsp;&nbsp;&nbsp;</c:if>
+			<c:if test="${raceDistance.otherDistance eq 'otherDistance' }">
+				<c:forEach items="${otherDistance }" var="otherDistance">
 				${otherDistance}&nbsp;&nbsp;&nbsp;
 			</c:forEach>
-		</c:if></b> <br>
-		关门时间：<b>${competition.doorClose }</b> <br>
-		<br> 官方网址：<a
+			</c:if></b> <br> 关门时间：<b><c:forEach items="${doorCloseList }"
+				var="doorClose">
+				${doorClose}&nbsp;&nbsp;&nbsp;
+			</c:forEach></b> <br> <br> 官方网址：<a
 			href="<c:url value='${competition.officialWebsite }'></c:url>"><b>点击进入</b></a><br>
 		报名地址：<a href="<c:url value='${competition.enrollLinke }'></c:url>"><b>点击进入</b></a><br>
 	</div>

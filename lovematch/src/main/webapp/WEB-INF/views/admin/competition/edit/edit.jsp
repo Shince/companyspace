@@ -90,20 +90,27 @@
 						<c:if test="${raceDistance.otherDistance eq 'otherDistance' }">checked</c:if>>其他距离
 					</span> <br> <br>
 					<div id="isShowHid">
-						<input type="text" name="other0" value="${otherDistance[0]}"></input> 
-						<input type="text" name="other1" value="${otherDistance[1]}"></input> <br> 
-						<input type="text" name="other2" value="${otherDistance[2]}"></input>
-						<input type="text" name="other3" value="${otherDistance[3]}"></input> <br> 
-						<input type="text" name="other4" value="${otherDistance[4]}"></input> 
-						<input type="text" name="other5" value="${otherDistance[5]}"></input>
+						<input type="text" name="other0" value="${otherDistance[0]}"></input>
+						<input type="text" name="other1" value="${otherDistance[1]}"></input>
+						<br> <input type="text" name="other2"
+							value="${otherDistance[2]}"></input> <input type="text"
+							name="other3" value="${otherDistance[3]}"></input> <br> <input
+							type="text" name="other4" value="${otherDistance[4]}"></input> <input
+							type="text" name="other5" value="${otherDistance[5]}"></input>
 					</div>
 				</div>
 			</div>
 			<div class="control-group" id="title">
 				<div class="controls">
-					关门时间：<input type="text" name="doorClose" placeholder="关门时间"
-						value="${competition.doorClose }"> <span
-						class="help-inline"></span>
+					关门时间：<br> <input type="text" name="doorClose0"
+						value="${doorCloseList[0] }"></input> <input type="text"
+						name="doorClose1" value="${doorCloseList[1] }"></input> <br>
+					<input type="text" name="doorClose2"
+						value="${doorCloseList[2] }"></input> <input type="text"
+						name="doorClose3" value="${doorCloseList[3] }"></input> <br>
+					<input type="text" name="doorClose4"
+						value="${doorCloseList[4] }"></input> <input type="text"
+						name="doorClose5" value="${doorCloseList[5] }"></input>
 				</div>
 			</div>
 			<div class="control-group" id="content">
@@ -170,7 +177,7 @@
 								"selected", true);
 
 					});
-	$(document).ready(function(){
+	$(document).ready(function() {
 		if ($("#otherDistance").attr("checked")) {
 			$("#isShowHid").show();
 		} else {
