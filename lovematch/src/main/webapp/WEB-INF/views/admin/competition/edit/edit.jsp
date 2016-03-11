@@ -64,7 +64,7 @@
 			<div class="control-group" id="title">
 				<div class="controls">
 					报名链接：<input type="text" required="required" name="enrollLinke"
-						placeholder="报名链接" value="${competition.title }"> <span
+						placeholder="报名链接" value="${competition.enrollLinke }"> <span
 						class="help-inline"></span>
 				</div>
 			</div>
