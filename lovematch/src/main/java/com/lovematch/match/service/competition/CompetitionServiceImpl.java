@@ -87,4 +87,11 @@ public class CompetitionServiceImpl implements CompetitionService {
 		}
 	}
 
+	@Override
+	public Page<Competition> findPageByFirstDateAndLastDate(int pageNumber,
+			int pageSize, Date firstDate, Date lastDate) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		return repository.findAllByFirstDateAndLastDate(lastDate, firstDate, pageable);
+	}
+
 }

@@ -14,4 +14,5 @@ public interface CompetitionService extends BaseService<Competition> {
 	Page<Competition> findPageByTypeAsc(String type, int pageNumber,int pageSize);
 	List<Competition> findList(String order);
 	Page<Competition> findPageByCurrentDate(int pageNumber,int pageSize, Date currentDate);
+	Page<Competition> findPageByFirstDateAndLastDate(int pageNumber,int pageSize, Date firstDate, Date lastDate);
 }
