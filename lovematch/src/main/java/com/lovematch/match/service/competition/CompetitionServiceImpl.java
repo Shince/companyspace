@@ -61,8 +61,8 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	@Override
-	public Page<Competition> findPageByType(String type, int pageNumber, int pageSize) {
-		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "id");
+	public Page<Competition> findPageByTypeDesc(String type, int pageNumber, int pageSize) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "competitionStartDate");
 		if (type != null && type.equals("all")) {
 			return repository.findAll(pageable);
 		} else {
@@ -78,7 +78,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	@Override
-	public Page<Competition> findPageByTypeAsc(String type, int pageNumber, int pageSize) {
+	public Page<Competition> findPageByType(String type, int pageNumber, int pageSize) {
 		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
 		if (type != null && type.equals("all")) {
 			return repository.findAll(pageable);
@@ -88,10 +88,28 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	@Override
+	public Page<Competition> findPageByTitleLikeDesc(String title, int pageNumber, int pageSize) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "competitionStartDate");
+		if (title == null || title.equals("")) {
+			return repository.findAll(pageable);
+		} else {
+			return repository.findAllByTitleLike(title, pageable);
+		}
+	}
+	@Override
 	public Page<Competition> findPageByFirstDateAndLastDate(int pageNumber,
 			int pageSize, Date firstDate, Date lastDate) {
 		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
 		return repository.findAllByFirstDateAndLastDate(lastDate, firstDate, pageable);
+	}
+	@Override
+	public Page<Competition> findPageByTitleLike(String title, int pageNumber, int pageSize) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		if (title == null || title.equals("")) {
+			return repository.findAll(pageable);
+		} else {
+			return repository.findAllByTitleLike(title, pageable);
+		}
 	}
 
 }

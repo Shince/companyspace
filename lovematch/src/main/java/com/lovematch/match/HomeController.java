@@ -52,7 +52,7 @@ public class HomeController {
  
 	@RequestMapping(value = "/competitions/{type}/list", method = RequestMethod.GET)
 	public String homePage(Locale locale, Model model, @PathVariable String type,
-			@RequestParam(value = "order", defaultValue = "desc") String order,
+			@RequestParam(value = "order", defaultValue = "asc") String order,
 			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
 			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
@@ -60,10 +60,33 @@ public class HomeController {
 		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
 		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
 		Page<Competition> page;
-		if (order!=null && "asc".equals(order)){
-			page = competitionService.findPageByTypeAsc(type, pageNumber, pageSize);
+		if (order!=null && "desc".equals(order)){
+			page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
 		}else{
 			page = competitionService.findPageByType(type, pageNumber, pageSize);
+		}
+		
+		model.addAttribute("page", page);
+		return "home";
+	}
+	
+	@RequestMapping(value = "/competitions/search", method = RequestMethod.POST)
+	public String search(Locale locale, Model model, @RequestParam(value = "searchFor") String searchFor,
+			@RequestParam(value = "order", defaultValue = "asc") String order,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+		if(searchFor!=null){
+			searchFor = "%"+searchFor+"%";
+		}
+		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
+		model.addAttribute("sharingInfo", sharinginfo.getContent());
+		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+		Page<Competition> page;
+		if (order!=null && "desc".equals(order)){
+			page = competitionService.findPageByTitleLikeDesc(searchFor, pageNumber, pageSize);
+		}else{
+			page = competitionService.findPageByTitleLike(searchFor, pageNumber, pageSize);
 		}
 		
 		model.addAttribute("page", page);
