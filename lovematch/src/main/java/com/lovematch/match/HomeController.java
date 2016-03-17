@@ -1,5 +1,6 @@
 package com.lovematch.match;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -54,7 +55,8 @@ public class HomeController {
 	public String homePage(Locale locale, Model model, @PathVariable String type,
 			@RequestParam(value = "order", defaultValue = "asc") String order,
 			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize
+			) {
 		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
 		model.addAttribute("sharingInfo", sharinginfo.getContent());
 		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
@@ -66,6 +68,39 @@ public class HomeController {
 			page = competitionService.findPageByType(type, pageNumber, pageSize);
 		}
 		
+		model.addAttribute("page", page);
+		return "home";
+	}
+	@SuppressWarnings("unused")
+	@RequestMapping(value = "/competitions/{type}/timefilter", method = RequestMethod.GET)
+	public String filterCompetitonsByTimeRange(Model model,@PathVariable String type,
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "order", defaultValue = "asc") String order,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			@RequestParam(value="firstDate" ,defaultValue="") String firstDate,
+			@RequestParam(value="lastDate" ,defaultValue="") String lastDate){
+		Page<SharingInfo> sharinginfo = sharingInfoService.findPageOrderByDate(0, 10, null);
+		model.addAttribute("sharingInfo", sharinginfo.getContent());
+		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
+		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
+		
+		Page<Competition> page;
+		firstDate = firstDate.trim();
+		lastDate = lastDate.trim();
+		if((firstDate != null && !firstDate.equals("")) && (lastDate != null && !lastDate.equals(""))){
+			try {
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				Date fDate = formatter.parse(firstDate);
+				Date lDate = formatter.parse(lastDate);
+				page = competitionService.findPageByOrderAndFirstDateAndLastDate(pageNumber, pageSize, order, fDate, lDate);
+			} catch (Exception e) {
+				e.printStackTrace();
+				page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
+			}
+		}else{
+			page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
+		}
 		model.addAttribute("page", page);
 		return "home";
 	}

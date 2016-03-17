@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script type="text/javascript"src="<c:url value="/resources/js/date/WdatePicker.js" />"></script>
 <style>
 a[class='date-filter']:hover {
 	color: #ff6920;
@@ -17,6 +18,14 @@ a[class='date-filter']:hover {
 		<a class="date-filter" href="<c:url value='?order=asc'></c:url>">日期升序</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="date-filter" href="<c:url value='?order=desc'></c:url>">日期降序</a>
+	</div>
+	<div class="row-fluid">
+		<form class="pull-right"  action="<c:url value='/competitions/all/timefilter'></c:url>" method="get">
+			<input placeholder="开始时间" value="${firstDate }" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate input-small" required="required" type="text" name="firstDate" > 
+			 至  
+			<input placeholder="结束时间" value="${lastDate }" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate input-small" required="required"   type="text" name="lastDate" >
+			<button type="submit" class="btn" style="margin-bottom: 13px;">搜索</button>
+		</form>
 	</div>
 	<div class="row-fluid">
 		<c:forEach items="${page.content }" var="page">

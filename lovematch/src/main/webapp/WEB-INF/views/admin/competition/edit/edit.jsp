@@ -5,8 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/emptyCheck-ajax.js" />"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/date/WdatePicker.js" />"></script>
+<script type="text/javascript"src="<c:url value="/resources/js/date/WdatePicker.js" />"></script>
 <style>
 </style>
 

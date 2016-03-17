@@ -97,10 +97,22 @@ public class CompetitionServiceImpl implements CompetitionService {
 		}
 	}
 	@Override
-	public Page<Competition> findPageByFirstDateAndLastDate(int pageNumber,
-			int pageSize, Date firstDate, Date lastDate) {
-		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
-		return repository.findAllByFirstDateAndLastDate(lastDate, firstDate, pageable);
+	public Page<Competition> findPageByOrderAndFirstDateAndLastDate(int pageNumber,
+			int pageSize, String order,Date firstDate, Date lastDate) {
+		Pageable pageable;
+		if(order != null && order.equals("asc")){
+			pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		}else{
+			pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "competitionStartDate");
+		}
+		Page<Competition> page;
+		try {
+			page = repository.findAllByFirstDateAndLastDate(firstDate,lastDate, pageable);
+		} catch (Exception e) {
+			e.printStackTrace();
+			page = repository.findAll(pageable);
+		}
+		return page;
 	}
 	@Override
 	public Page<Competition> findPageByTitleLike(String title, int pageNumber, int pageSize) {
@@ -111,5 +123,6 @@ public class CompetitionServiceImpl implements CompetitionService {
 			return repository.findAllByTitleLike(title, pageable);
 		}
 	}
+
 
 }
