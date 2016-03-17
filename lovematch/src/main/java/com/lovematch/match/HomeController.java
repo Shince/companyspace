@@ -104,7 +104,6 @@ public class HomeController {
 		model.addAttribute("page", page);
 		return "home";
 	}
-	
 	@RequestMapping(value = "/competitions/search", method = RequestMethod.POST)
 	public String search(Locale locale, Model model, @RequestParam(value = "searchFor") String searchFor,
 			@RequestParam(value = "order", defaultValue = "asc") String order,
