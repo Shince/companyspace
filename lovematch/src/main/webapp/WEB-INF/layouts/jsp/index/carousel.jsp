@@ -15,27 +15,28 @@
 </script>
 <style>
 </style>
-<!--
+
 	<div id="myCarousel" class="carousel slide" style="z-index: 100;">
 		  <div class="carousel-inner"  >
-		    <div class="item active" style="background-color: #e3cbbf;" >
-		    	<div style="width: 1200px; margin: 0 auto;">
-		    		<img  src="<c:url value="/resources/img/nmg/banner.jpg"></c:url> ">
+		    <div class="item active" style="" >
+		    	<div style="width: 1400px; margin: 0 auto;">
+		    		<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
 		    	</div>
 		    </div>
-		    <div class="item " style="background-color: #e3cbbf;" >
-		    	<div style="width: 1200px; margin: 0 auto;">
-		    		<img  src="<c:url value="/resources/img/nmg/banner.jpg"></c:url> ">
+		    <div class="item " style="" >
+		    	<div style="width: 1400px; margin: 0 auto;">
+		    		<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
 		    	</div>
 		    </div>
-		     <div class="item " style="background-color: #e3cbbf;" >
-		    	<div style="width: 1200px; margin: 0 auto;">
-		    		<img  src="<c:url value="/resources/img/nmg/banner.jpg"></c:url> ">
+		     <div class="item " style="" >
+		    	<div style="width: 1400px; margin: 0 auto;">
+		    		<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
 		    	</div>
 		    </div>
 		 
 	  </div>
-	</div> -->
+	</div> 
+<!--	
 <div class="row-fluid" style="margin: 0 auto; text-align: center;">
 	<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
-</div>
+</div>-->
