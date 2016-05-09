@@ -108,31 +108,46 @@ public class CompetitionController {
 
 	@RequestMapping(value = "/admin/competition/view/{id}")
 	public String showConpetitionViewPage(Model model, @PathVariable Long id) {
-		// Competition competition = competitionService.find(id);
-		// RaceDistance raceDistance = new RaceDistance();
-		// String distance = competition.getDistance();
-		// String[] distanceArray = distance.split("&");
-		// List<String> distanceList = Arrays.asList(distanceArray);
-		// List<String> otherDistanceList= new ArrayList<String>();
-		// for(String dis : distanceList){
-		// if(dis.equals("wholeMarathon")){
-		// raceDistance.setWholeMarathon("wholeMarathon");
-		// }
-		// else if(dis.equals("halfMarathon")){
-		// raceDistance.setHalfMarathon("halfMarathon");
-		// }
-		// else if(dis!=null && !dis.isEmpty()){
-		// raceDistance.setOtherDistance("otherDistance");
-		// otherDistanceList.add(dis);
-		// raceDistance.setOtherDistanceList(otherDistanceList);
-		// }
-		// }
-		// model.addAttribute("competition", competition);
-		// model.addAttribute("raceDistance", raceDistance);
-		// model.addAttribute("otherDistance",raceDistance.getOtherDistanceList());
-		// List<Product> products =
-		// productService.findAllByCompetition(competition);
-		// model.addAttribute("products", products);
+		Competition competition = competitionService.find(id);
+		// for distance
+		RaceDistance raceDistance = new RaceDistance();
+		String distance = competition.getDistance();
+		if (distance != null && !distance.isEmpty()) {
+			String[] distanceArray = distance.split("&");
+			List<String> distanceList = Arrays.asList(distanceArray);
+			List<String> otherDistanceList = new ArrayList<String>();
+			for (String dis : distanceList) {
+				if (dis.equals("wholeMarathon")) {
+					raceDistance.setWholeMarathon("wholeMarathon");
+				} else if (dis.equals("halfMarathon")) {
+					raceDistance.setHalfMarathon("halfMarathon");
+				} else if (dis != null && !dis.isEmpty()) {
+					raceDistance.setOtherDistance("otherDistance");
+					otherDistanceList.add(dis);
+					raceDistance.setOtherDistanceList(otherDistanceList);
+				}
+			}
+		}
+		
+		// for door close
+		String doorClose = competition.getDoorClose();
+		List<String> dcList = new ArrayList<String>();
+		List<String> doorCloseList = new ArrayList<String>();
+		if (doorClose != null && !doorClose.isEmpty()) {
+			String[] doorCloseArray = doorClose.split("&");
+			doorCloseList = Arrays.asList(doorCloseArray);
+			for (String dc : doorCloseList) {
+				if (dc != null && !dc.isEmpty()) {
+					dcList.add(dc);
+				}
+			}
+		}
+		
+		model.addAttribute("competition", competition);
+		model.addAttribute("raceDistance", raceDistance);
+		model.addAttribute("otherDistance", raceDistance.getOtherDistanceList());
+		List<Product> products = productService.findAllByCompetition(competition);
+		model.addAttribute("products", products);
 		return "admin.competition.view";
 	}
 
