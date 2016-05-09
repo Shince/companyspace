@@ -63,15 +63,14 @@ public class HomeController {
 		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
 		Page<Competition> page;
 		if (order!=null && "desc".equals(order)){
-			page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
+			page = competitionService.findPageActiveByTypeDesc(type, pageNumber, pageSize, new Date());
 		}else{
-			page = competitionService.findPageByType(type, pageNumber, pageSize);
+			page = competitionService.findPageActiveByType(type, pageNumber, pageSize, new Date());
 		}
 		
 		model.addAttribute("page", page);
 		return "home";
 	}
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "/competitions/{type}/timefilter", method = RequestMethod.GET)
 	public String filterCompetitonsByTimeRange(Model model,@PathVariable String type,
 			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,

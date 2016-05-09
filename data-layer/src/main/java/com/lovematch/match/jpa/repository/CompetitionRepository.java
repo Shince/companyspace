@@ -21,6 +21,12 @@ public interface CompetitionRepository extends JpaRepository<Competition, Long>,
 	Page<Competition> findAllByFirstDateAndLastDate(@Param( "firstDate" )Date firstDate,@Param( "lastDate" )Date lastDate, Pageable pageable);
 	
 	Page<Competition> findAllByTitleLike(String title, Pageable pageable);
-
+	
+	@Query("select c from Competition c where c.competitionStartDate >= :todayDate")
+	Page<Competition> findAllActive(@Param( "todayDate" )Date currentDate, Pageable pageable);
+	
+	@Query("select c from Competition c where c.competitionStartDate >= :todayDate and c.type = :type")
+	Page<Competition> findAllActiveByType(@Param( "type" )String type, @Param( "todayDate" )Date currentDate, Pageable pageable);
+	
 }
 

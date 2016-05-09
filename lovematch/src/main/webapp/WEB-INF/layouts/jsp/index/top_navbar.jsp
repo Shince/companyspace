@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="row-fluid max-width">
-	<img class="pull-left"
-		src="<c:url value='/resources/img/match/logo.jpg'></c:url>">
+	<img style="width:150px;" class="pull-left"
+		src="<c:url value='/resources/img/match/logo.png'></c:url>">
 	<!--  
 	<div class="pull-right">
 		<br>

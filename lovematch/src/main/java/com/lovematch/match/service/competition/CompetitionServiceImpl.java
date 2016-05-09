@@ -61,10 +61,40 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	@Override
+	public Page<Competition> findPageByType(String type, int pageNumber, int pageSize) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		if (type != null && type.equals("all")) {
+			return repository.findAll(pageable);
+		} else {
+			return repository.findAllByType(type, pageable);
+		}
+	}
+	
+	@Override
 	public Page<Competition> findPageByTypeDesc(String type, int pageNumber, int pageSize) {
 		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "competitionStartDate");
 		if (type != null && type.equals("all")) {
 			return repository.findAll(pageable);
+		} else {
+			return repository.findAllByType(type, pageable);
+		}
+	}
+	
+	@Override
+	public Page<Competition> findPageActiveByType(String type, int pageNumber, int pageSize, Date currentDate) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		if (type != null && type.equals("all")) {
+			return repository.findAllActive(currentDate, pageable);
+		} else {
+			return repository.findAllByType(type, pageable);
+		}
+	}
+	
+	@Override
+	public Page<Competition> findPageActiveByTypeDesc(String type, int pageNumber, int pageSize, Date currentDate) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "competitionStartDate");
+		if (type != null && type.equals("all")) {
+			return repository.findAllActive(currentDate, pageable);
 		} else {
 			return repository.findAllByType(type, pageable);
 		}
@@ -75,16 +105,6 @@ public class CompetitionServiceImpl implements CompetitionService {
 		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "startDate");
 		Page<Competition> page = repository.findAllByCurrentDate(currentDate, pageable);
 		return page;
-	}
-
-	@Override
-	public Page<Competition> findPageByType(String type, int pageNumber, int pageSize) {
-		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
-		if (type != null && type.equals("all")) {
-			return repository.findAll(pageable);
-		} else {
-			return repository.findAllByType(type, pageable);
-		}
 	}
 
 	@Override
