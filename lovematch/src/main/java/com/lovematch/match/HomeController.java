@@ -86,10 +86,16 @@ public class HomeController {
 		Page<Competition> page;
 		firstDate = firstDate.trim();
 		lastDate = lastDate.trim();
+		if(firstDate == null || firstDate.equals("")){
+			firstDate = lastDate;
+		}else if(lastDate == null || lastDate.equals("")){
+			 lastDate = firstDate;
+		}
 		if((firstDate != null && !firstDate.equals("")) && (lastDate != null && !lastDate.equals(""))){
+			firstDate += " 00:00";
+			lastDate += " 23:59";
 			try {
-				
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				Date fDate = formatter.parse(firstDate);
 				Date lDate = formatter.parse(lastDate);
 				page = competitionService.findPageByOrderAndFirstDateAndLastDate(pageNumber, pageSize, order, fDate, lDate);

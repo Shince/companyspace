@@ -21,9 +21,9 @@ a[class='date-filter']:hover {
 	</div>
 	<div class="row-fluid">
 		<form class="pull-right"  action="<c:url value='/competitions/all/timefilter'></c:url>" method="get">
-			<input placeholder="开始时间" value="${firstDate }" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate input-small" required="required" type="text" name="firstDate" > 
+			<input placeholder="开始时间" value="${firstDate }" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate input-small" type="text" name="firstDate" > 
 			 至  
-			<input placeholder="结束时间" value="${lastDate }" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate input-small" required="required"   type="text" name="lastDate" >
+			<input placeholder="结束时间" value="${lastDate }" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate input-small" type="text" name="lastDate" >
 			<button type="submit" class="btn" style="margin-bottom: 13px;">搜索</button>
 		</form>
 	</div>
