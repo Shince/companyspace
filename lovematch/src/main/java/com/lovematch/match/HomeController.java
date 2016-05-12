@@ -53,6 +53,7 @@ public class HomeController {
  
 	@RequestMapping(value = "/competitions/{type}/list", method = RequestMethod.GET)
 	public String homePage(Locale locale, Model model, @PathVariable String type,
+			@RequestParam(value = "status", defaultValue = "active") String status,
 			@RequestParam(value = "order", defaultValue = "asc") String order,
 			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
 			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize
@@ -62,10 +63,18 @@ public class HomeController {
 		Page<Competition> unstartCompetitions = competitionService.findPageByCurrentDate(0, 20, new Date());
 		model.addAttribute("unstartCompetitions",unstartCompetitions.getContent());
 		Page<Competition> page;
-		if (order!=null && "desc".equals(order)){
-			page = competitionService.findPageActiveByTypeDesc(type, pageNumber, pageSize, new Date());
+		if(status!=null && status.equals("inactive")){
+			if (order!=null && "desc".equals(order)){
+				page = competitionService.findPageInactiveByTypeDesc(type, pageNumber, pageSize, new Date());
+			}else{
+				page = competitionService.findPageInactiveByType(type, pageNumber, pageSize, new Date());
+			}
 		}else{
-			page = competitionService.findPageActiveByType(type, pageNumber, pageSize, new Date());
+			if (order!=null && "desc".equals(order)){
+				page = competitionService.findPageActiveByTypeDesc(type, pageNumber, pageSize, new Date());
+			}else{
+				page = competitionService.findPageActiveByType(type, pageNumber, pageSize, new Date());
+			}
 		}
 		
 		model.addAttribute("page", page);
@@ -104,7 +113,11 @@ public class HomeController {
 				page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
 			}
 		}else{
-			page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
+			if(order != null && order.equals("asc")){
+				page = competitionService.findPageByType(type, pageNumber, pageSize);
+			}else{
+				page = competitionService.findPageByTypeDesc(type, pageNumber, pageSize);
+			}
 		}
 		model.addAttribute("page", page);
 		return "home";

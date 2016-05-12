@@ -86,7 +86,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 		if (type != null && type.equals("all")) {
 			return repository.findAllActive(currentDate, pageable);
 		} else {
-			return repository.findAllByType(type, pageable);
+			return repository.findAllActiveByType(type, currentDate, pageable);
 		}
 	}
 	
@@ -96,7 +96,27 @@ public class CompetitionServiceImpl implements CompetitionService {
 		if (type != null && type.equals("all")) {
 			return repository.findAllActive(currentDate, pageable);
 		} else {
-			return repository.findAllByType(type, pageable);
+			return repository.findAllActiveByType(type, currentDate, pageable);
+		}
+	}
+	
+	@Override
+	public Page<Competition> findPageInactiveByType(String type, int pageNumber, int pageSize, Date currentDate) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.ASC, "competitionStartDate");
+		if (type != null && type.equals("all")) {
+			return repository.findAllInactive(currentDate, pageable);
+		} else {
+			return repository.findAllInactiveByType(type, currentDate, pageable);
+		}
+	}
+	
+	@Override
+	public Page<Competition> findPageInactiveByTypeDesc(String type, int pageNumber, int pageSize, Date currentDate) {
+		Pageable pageable = new PageRequest(pageNumber, pageSize, Direction.DESC, "competitionStartDate");
+		if (type != null && type.equals("all")) {
+			return repository.findAllInactive(currentDate, pageable);
+		} else {
+			return repository.findAllInactiveByType(type, currentDate, pageable);
 		}
 	}
 

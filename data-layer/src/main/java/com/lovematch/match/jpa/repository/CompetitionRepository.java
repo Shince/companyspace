@@ -28,5 +28,11 @@ public interface CompetitionRepository extends JpaRepository<Competition, Long>,
 	@Query("select c from Competition c where c.competitionStartDate >= :todayDate and c.type = :type")
 	Page<Competition> findAllActiveByType(@Param( "type" )String type, @Param( "todayDate" )Date currentDate, Pageable pageable);
 	
+	@Query("select c from Competition c where c.competitionStartDate < :todayDate")
+	Page<Competition> findAllInactive(@Param( "todayDate" )Date currentDate, Pageable pageable);
+	
+	@Query("select c from Competition c where c.competitionStartDate < :todayDate and c.type = :type")
+	Page<Competition> findAllInactiveByType(@Param( "type" )String type, @Param( "todayDate" )Date currentDate, Pageable pageable);
+	
 }
 

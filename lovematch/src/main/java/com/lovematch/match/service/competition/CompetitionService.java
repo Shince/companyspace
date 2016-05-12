@@ -21,4 +21,6 @@ public interface CompetitionService extends BaseService<Competition> {
 	
 	Page<Competition> findPageActiveByType(String type, int pageNumber, int pageSize, Date currentDate);
 	Page<Competition> findPageActiveByTypeDesc(String type, int pageNumber, int pageSize, Date currentDate);
+	Page<Competition> findPageInactiveByType(String type, int pageNumber, int pageSize, Date currentDate);
+	Page<Competition> findPageInactiveByTypeDesc(String type, int pageNumber, int pageSize, Date currentDate);
 }
