@@ -39,10 +39,9 @@ a[class='date-filter']:hover {
 	</div>
 	<script>
 		if (urlString.indexOf("timefilter") >= 0) {
-			$("#orderAsc").prop("href", urlSerach+"&order=asc");
-			$("#orderDesc").prop("href", urlSerach+"&order=desc");	
-		}
-		else if (status == "null") {
+			$("#orderAsc").prop("href", urlSerach + "&order=asc");
+			$("#orderDesc").prop("href", urlSerach + "&order=desc");
+		} else if (status == "null") {
 			$("#orderAsc").prop("href", "?status=active&order=asc");
 			$("#orderDesc").prop("href", "?status=active&order=desc");
 		} else {
@@ -86,14 +85,18 @@ a[class='date-filter']:hover {
 						<td width="30%" align="left" valign="top"><br>
 							<p>
 								比赛时间：
+								<c:if test="${empty page.competitionStartDate}">未定</c:if>
 								<fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 									value="${page.competitionStartDate}"></fmt:formatDate>
 							</p>
 							<p>
 								报名时间：
+								<c:if test="${empty page.startDate}">未定</c:if>
 								<fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 									value="${page.startDate}"></fmt:formatDate>
-								<br> <span style="margin-left: 20%;">至：<fmt:formatDate
+								<br> <span style="margin-left: 20%;">至：
+								<c:if test="${empty page.endDate}">未定</c:if>
+								<fmt:formatDate
 										pattern="yyyy-MM-dd HH:mm" value="${page.endDate}"></fmt:formatDate></span>
 							</p></td>
 					</tr>
