@@ -40,7 +40,7 @@
 				<div class="controls">
 					报名开始：<input type="text"
 						onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" class="Wdate"
-						required="required" name="startDate" placeholder="开始时间"
+						name="startDate" placeholder="开始时间"
 						value="${competition.startDate }"> <span
 						class="help-inline"></span>
 				</div>
@@ -49,7 +49,7 @@
 				<div class="controls">
 					报名结束：<input type="text"
 						onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" class="Wdate"
-						required="required" name="endDate" placeholder="结束时间"
+						name="endDate" placeholder="结束时间"
 						value="${competition.endDate }"> <span class="help-inline"></span>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 				<div class="controls">
 					比赛时间：<input type="text"
 						onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" class="Wdate"
-						required="required" name="competitionStartDate"
+						name="competitionStartDate"
 						placeholder="比赛开始时间" value="${competition.competitionStartDate }">
 					<span class="help-inline"></span>
 				</div>

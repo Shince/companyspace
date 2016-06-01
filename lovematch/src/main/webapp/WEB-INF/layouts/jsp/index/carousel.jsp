@@ -19,18 +19,18 @@
 	<div id="myCarousel" class="carousel slide" style="z-index: 100;">
 		  <div class="carousel-inner"  >
 		    <div class="item active" style="" >
-		    	<div style="width: 1400px; margin: 0 auto;">
-		    		<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
+		    	<div style="width: 1120px; margin: 0 auto;">
+		    		<img src="<c:url value='/resources/img/match/banner1.jpg'></c:url>">
 		    	</div>
 		    </div>
 		    <div class="item " style="" >
-		    	<div style="width: 1400px; margin: 0 auto;">
-		    		<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
+		    	<div style="width: 1000px; margin: 0 auto;">
+		    		<img src="<c:url value='/resources/img/match/banner2.jpg'></c:url>">
 		    	</div>
 		    </div>
 		     <div class="item " style="" >
-		    	<div style="width: 1400px; margin: 0 auto;">
-		    		<img src="<c:url value='/resources/img/match/banner.jpg'></c:url>">
+		    	<div style="width: 950px; margin: 0 auto;">
+		    		<img src="<c:url value='/resources/img/match/banner3.jpg'></c:url>">
 		    	</div>
 		    </div>
 		 

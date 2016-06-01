@@ -171,16 +171,31 @@ public class CompetitionController {
 		competition.setType(type);
 		try {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-			Date sDate = formatter.parse(startDate);
-			Date eDate = formatter.parse(endDate);
-			Date csDate = formatter.parse(competitionStartDate);
+			Date sDate;
+			Date eDate;
+			Date csDate;
+			if(startDate!=null && !startDate.equals("")){
+				sDate = formatter.parse(startDate);
+			}else{
+				sDate=null;
+			}
+			if(endDate!=null && !endDate.equals("")){
+				eDate= formatter.parse(endDate);
+			}else{
+				eDate=null;
+			}
+			if(competitionStartDate!=null && !competitionStartDate.equals("")){
+				csDate = formatter.parse(competitionStartDate);
+			}else{
+				csDate=null;
+			}
 			competition.setStartDate(sDate);
 			competition.setEndDate(eDate);
 			competition.setCompetitionStartDate(csDate);
 		} catch (Exception e) {
 			e.printStackTrace();
-			competition.setStartDate(new Date());
-			competition.setEndDate(new Date());
+//			competition.setStartDate(new Date());
+//			competition.setEndDate(new Date());
 		}
 		competition.setEnrollLinke(enrollLinke);
 		competition.setOfficialWebsite(webUrl);
