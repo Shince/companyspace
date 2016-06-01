@@ -32,11 +32,13 @@ a[class='date-filter']:hover {
 		<div style="text-align: center;">
 			<img src="<c:url value='${competition.contextPicPath }'></c:url>">
 		</div>
-		<br> ${competition.description } <br> <br> 比赛时间：<b><fmt:formatDate
+		<br> ${competition.description } <br> <br> 比赛时间：<b>
+		<c:if test="${empty competition.competitionStartDate}">未定</c:if>
+		<fmt:formatDate
 				pattern="yyyy-MM-dd HH:mm"
 				value="${competition.competitionStartDate}"></fmt:formatDate></b><br>
-		报名时间：<b><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-				value="${competition.startDate}"></fmt:formatDate> 至 <fmt:formatDate
+		报名时间：<b><c:if test="${empty competition.startDate}">未定</c:if><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+				value="${competition.startDate}"></fmt:formatDate> 至 <c:if test="${empty competition.endDate}">未定</c:if><fmt:formatDate
 				pattern="yyyy-MM-dd HH:mm" value="${competition.endDate}"></fmt:formatDate></b><br>
 		<br> 比赛距离：<b><c:if
 				test="${raceDistance.wholeMarathon eq 'wholeMarathon' }">全程马拉松&nbsp;&nbsp;&nbsp;</c:if>
